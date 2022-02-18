@@ -25,6 +25,7 @@ public class HienThiCacHinh {
                         }
                         System.out.println("");
                     }
+                    break;
                 case 2:
                     for (int i = 1; i <= 7; i++) {
                         for (int j = 1; j <= i; j++) {
@@ -32,6 +33,7 @@ public class HienThiCacHinh {
                         }
                         System.out.println("");
                     }
+                    break;
                 case 3:
                     for (int i = 1; i <= 7; i++) {
                         for (int j = 1; j <= 7 - i; j++) {
@@ -39,6 +41,7 @@ public class HienThiCacHinh {
                         }
                         System.out.println("");
                     }
+                    break;
                 case 4:
                     for (int i = 1; i <= 7; i++) {
                         for (int k = 7; k > i; k--) {
@@ -49,6 +52,7 @@ public class HienThiCacHinh {
                         }
                         System.out.println("");
                     }
+                    break;
                 case 0:
                     System.exit(0);
                 default:

@@ -119,7 +119,7 @@ public class UngDungDocSoThanhChu {
             System.out.println("out of ability");
         }
     }
-    private static String cloneUnit(int unit, String result) {
+    public static String cloneUnit(int unit, String result) {
         switch (unit) {
             case 0:
                 break;
