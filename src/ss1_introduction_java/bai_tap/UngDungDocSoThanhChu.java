@@ -1,5 +1,7 @@
 package ss1_introduction_java.bai_tap;
 
+import ss4_class_and_object_in_java.thuc_hanh.Rectangle;
+
 import java.util.Scanner;
 
 public class UngDungDocSoThanhChu {
