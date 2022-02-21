@@ -2,7 +2,7 @@ package ss2_loop_in_java.thuc_hanh;
 
 import java.util.Scanner;
 
-public class KiemTraSNT {
+public class KiemTraSoNguyenTo {
     public static void main(String[] args) {
         int number;
         Scanner scanner = new Scanner(System.in);
