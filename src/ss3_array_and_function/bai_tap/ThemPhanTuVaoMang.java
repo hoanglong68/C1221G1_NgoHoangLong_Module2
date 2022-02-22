@@ -1,4 +1,4 @@
-package ss3_array_and_function_in_java.bai_tap;
+package ss3_array_and_function.bai_tap;
 
 import java.util.Arrays;
 import java.util.Scanner;

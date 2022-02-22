@@ -1,41 +1,38 @@
-package ss3_array_and_function_in_java.bai_tap;
+package ss3_array_and_function.thuc_hanh;
 
 import java.util.Scanner;
 
-public class TimGiaTriNhoNhatTrongMang {
+public class TimGiaTriLonNhatTrongMang {
     public static void main(String[] args) {
-        int[] arrays = createArrays();
-        int min = arrays[0];
-        for (int i = 0; i < arrays.length; i++) {
-            if (arrays[i] < min) {
-                min = arrays[i];
-            }
-        }
-        System.out.println("phần tử nhỏ nhất trong mảng là: " + min);
-    }
-
-    public static int[] createArrays() {
         int size;
         int[] array;
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("enter a size");
             size = Integer.parseInt(scanner.nextLine());
-            if (size > 20) {
+            if (size > 20){
                 System.out.println("size should not exceed 20");
             }
-        } while (size > 20);
+        }while (size > 20);
         array = new int[size];
         int i = 0;
-        while (i < array.length) {
+        while (i < array.length){
             System.out.println("enter element" + (i + 1) + " : ");
-            array[i] = Integer.parseInt(scanner.nextLine());
+            array[i]  = Integer.parseInt(scanner.nextLine());
             i++;
         }
         System.out.print("Property list: ");
         for (int j = 0; j < array.length; j++) {
             System.out.print(array[j] + "\t");
         }
-        return array;
+        int max = array[0];
+        int index = 1;
+        for (int j = 0; j < array.length; j++) {
+            if (array[j] > max) {
+                max = array[j];
+                index = j + 1;
+            }
+        }
+        System.out.println("The largest property value in the list is " + max + " ,at position " + index);
     }
 }

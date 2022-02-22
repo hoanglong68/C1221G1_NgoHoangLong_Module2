@@ -1,4 +1,4 @@
-package ss3_array_and_function_in_java.thuc_hanh;
+package ss3_array_and_function.thuc_hanh;
 
 public class GiaTriNhoNhatTrongMang {
     public static void main(String[] args) {

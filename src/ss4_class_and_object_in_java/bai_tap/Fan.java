@@ -4,11 +4,11 @@ public class Fan {
     public Fan() {
     }
 
-    private static final int SLOW = 1, MEDIUM = 2, FAST = 3;
-    public int speed = SLOW;
-    public boolean status = false;
-    public double radius = 5;
-    public String color = "blue";
+    public static final int SLOW = 1, MEDIUM = 2, FAST = 3;
+    private int speed = SLOW;
+    private boolean status = false;
+    private double radius = 5;
+    private String color = "blue";
 
     public int getSpeed() {
         return speed;

@@ -1,8 +1,8 @@
-package ss3_array_and_function_in_java.thuc_hanh;
+package ss3_array_and_function.thuc_hanh;
 
 import java.util.Scanner;
 
-public class TimGiaTriLonNhatTrongMang {
+public class UngDungDemSoSinhVienThiDo {
     public static void main(String[] args) {
         int size;
         int[] array;
@@ -10,29 +10,28 @@ public class TimGiaTriLonNhatTrongMang {
         do {
             System.out.println("enter a size");
             size = Integer.parseInt(scanner.nextLine());
-            if (size > 20){
+            if (size >= 30) {
                 System.out.println("size should not exceed 20");
             }
-        }while (size > 20);
+        } while (size >= 30);
         array = new int[size];
         int i = 0;
-        while (i < array.length){
+        while (i < array.length) {
             System.out.println("enter element" + (i + 1) + " : ");
-            array[i]  = Integer.parseInt(scanner.nextLine());
+            array[i] = Integer.parseInt(scanner.nextLine());
             i++;
         }
         System.out.print("Property list: ");
         for (int j = 0; j < array.length; j++) {
             System.out.print(array[j] + "\t");
         }
-        int max = array[0];
-        int index = 1;
+        int count = 0;
+        System.out.print("List of mark: ");
         for (int j = 0; j < array.length; j++) {
-            if (array[j] > max) {
-                max = array[j];
-                index = j + 1;
-            }
+            System.out.print(array[j] + "\t");
+            if (array[j] >= 5 && array[j] <= 10)
+                count++;
         }
-        System.out.println("The largest property value in the list is " + max + " ,at position " + index);
+        System.out.print("\n The number of students passing the exam is " + count);
     }
 }

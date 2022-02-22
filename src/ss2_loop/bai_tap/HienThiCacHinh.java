@@ -1,6 +1,4 @@
-package ss2_loop_in_java.bai_tap;
-
-import com.sun.xml.internal.ws.addressing.WsaActionUtil;
+package ss2_loop.bai_tap;
 
 import java.util.Scanner;
 

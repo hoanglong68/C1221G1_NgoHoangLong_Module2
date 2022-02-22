@@ -1,19 +1,30 @@
-package ss3_array_and_function_in_java.thuc_hanh;
+package ss3_array_and_function.bai_tap;
 
 import java.util.Scanner;
 
-public class UngDungDemSoSinhVienThiDo {
+public class TimGiaTriNhoNhatTrongMang {
     public static void main(String[] args) {
+        int[] arrays = createArrays();
+        int min = arrays[0];
+        for (int i = 0; i < arrays.length; i++) {
+            if (arrays[i] < min) {
+                min = arrays[i];
+            }
+        }
+        System.out.println("phần tử nhỏ nhất trong mảng là: " + min);
+    }
+
+    public static int[] createArrays() {
         int size;
         int[] array;
         Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("enter a size");
             size = Integer.parseInt(scanner.nextLine());
-            if (size >= 30) {
+            if (size > 20) {
                 System.out.println("size should not exceed 20");
             }
-        } while (size >= 30);
+        } while (size > 20);
         array = new int[size];
         int i = 0;
         while (i < array.length) {
@@ -25,13 +36,6 @@ public class UngDungDemSoSinhVienThiDo {
         for (int j = 0; j < array.length; j++) {
             System.out.print(array[j] + "\t");
         }
-        int count = 0;
-        System.out.print("List of mark: ");
-        for (int j = 0; j < array.length; j++) {
-            System.out.print(array[j] + "\t");
-            if (array[j] >= 5 && array[j] <= 10)
-                count++;
-        }
-        System.out.print("\n The number of students passing the exam is " + count);
+        return array;
     }
 }

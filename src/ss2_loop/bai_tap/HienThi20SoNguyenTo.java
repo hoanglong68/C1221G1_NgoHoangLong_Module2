@@ -1,4 +1,4 @@
-package ss2_loop_in_java.bai_tap;
+package ss2_loop.bai_tap;
 
 public class HienThi20SoNguyenTo {
     public static void main(String[] args) {
