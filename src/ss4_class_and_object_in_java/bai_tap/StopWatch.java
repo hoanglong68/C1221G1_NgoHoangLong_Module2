@@ -3,12 +3,11 @@ package ss4_class_and_object_in_java.bai_tap;
 import java.util.Date;
 
 public class StopWatch {
-    long date;
     long start;
     long end;
 
     public StopWatch() {
-        this.date = new Date().getTime();
+        long start = new Date().getTime();
     }
 
     public void start() {

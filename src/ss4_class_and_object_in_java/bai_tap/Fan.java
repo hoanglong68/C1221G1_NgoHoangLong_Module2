@@ -4,7 +4,7 @@ public class Fan {
     public Fan() {
     }
 
-    public static final int SLOW = 1, MEDIUM = 2, FAST = 3;
+    private static final int SLOW = 1, MEDIUM = 2, FAST = 3;
     public int speed = SLOW;
     public boolean status = false;
     public double radius = 5;
