@@ -3,7 +3,7 @@ package ss7_abstract_class_and_interface.bai_tap.colorable_interface;
 
 import ss7_abstract_class_and_interface.source_code.Rectangle;
 
-public class Square extends Rectangle implements Colorable{
+public class Square extends Rectangle implements Colorable {
     public Square() {
 
     }
@@ -17,7 +17,12 @@ public class Square extends Rectangle implements Colorable{
     }
 
     @Override
-    public void howToColor() {
+    public String toString() {
+        return "Square{" + "Area: " + this.getArea() + "}";
+    }
 
+    @Override
+    public void howToColor() {
+        System.out.println("Color all four sides");
     }
 }

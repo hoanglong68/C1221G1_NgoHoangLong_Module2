@@ -14,7 +14,8 @@ public class Rectangle extends ss7_abstract_class_and_interface.source_code.Rect
 
     @Override
     public void resize(double percent) {
-        this.setLength(this.getLength() * percent);
-        this.setWidth(this.getWidth() * percent);
+        this.setWidth(this.getWidth()+ this.getWidth() * (percent/100));
+        this.setLength(this.getLength()+ this.getLength() * (percent/100));
+
     }
 }

@@ -14,6 +14,6 @@ public class Circle extends ss7_abstract_class_and_interface.source_code.Circle 
 
     @Override
     public void resize(double percent) {
-        this.setRadius(this.getRadius() * percent);
+        this.setRadius(this.getRadius() + this.getRadius()* (percent/100));
     }
 }

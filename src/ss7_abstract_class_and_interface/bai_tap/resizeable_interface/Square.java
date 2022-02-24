@@ -17,6 +17,14 @@ public class Square extends Rectangle implements Resizeable {
 
     @Override
     public void resize(double percent) {
-        this.setWidth(this.getWidth() * percent);
+        this.setWidth(this.getWidth()+ this.getWidth() * (percent/100));
+    }
+
+    @Override
+    public String toString() {
+        return "A Square with side="
+                + getWidth()
+                + ", which is a subclass of "
+                + super.toString();
     }
 }
