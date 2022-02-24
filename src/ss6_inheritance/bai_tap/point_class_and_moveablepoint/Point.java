@@ -1,13 +1,46 @@
 package ss6_inheritance.bai_tap.point_class_and_moveablepoint;
 
-import ss6_inheritance.bai_tap.point2d_class_and_point3d_class.Point2D;
 
-public class Point extends Point2D {
+public class Point {
+    private float x;
+    private float y;
+
     public Point() {
+
     }
 
     public Point(float x, float y) {
-        super(x, y);
+        this.x = x;
+        this.y = y;
     }
 
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public void setXY(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public float[] getXY() {
+        return new float[]{x, y};
+    }
+
+    @Override
+    public String toString() {
+        return "( " + x + ", " + y + ")";
+    }
 }

@@ -1,9 +1,10 @@
 package ss6_inheritance.thuc_hanh;
 
-public class Square extends Rectangle{
-    public Square(){
+public class Square extends Rectangle {
+    public Square() {
 
     }
+
     public Square(double side) {
         super(side, side);
     }
