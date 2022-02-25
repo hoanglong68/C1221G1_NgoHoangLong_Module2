@@ -20,9 +20,9 @@ public class Test {
                 System.out.println("area "+square1.getArea());
             }
         }
-        circle.resize(100);
-        rectangle.resize(50);
-        square.resize(70);
+        circle.resize(Math.random() * 100 +1);
+        rectangle.resize(Math.random() * 100 +1);
+        square.resize(Math.random() * 100 +1);
         for (Shape shape : shapes) {
             if (shape instanceof Circle) {
                 Circle circle1 = (Circle) shape;
