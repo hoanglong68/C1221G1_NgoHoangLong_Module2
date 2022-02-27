@@ -59,7 +59,7 @@ public class Account {
     public void depositMoney() {
         double moneyWantToDeposit;
         do {
-            System.out.println("enter amount money to deposit for " + this.nameAccount);
+            System.out.println("enter amount money to deposit for " + this.getNameAccount());
             Scanner scanner = new Scanner(System.in);
             moneyWantToDeposit = Double.parseDouble(scanner.nextLine());
             if (moneyWantToDeposit <= 0) {
@@ -72,7 +72,7 @@ public class Account {
     public void withdrawMoney() {
         double moneyWantToWithdraw;
         do {
-            System.out.println("enter amount money to withdraw for " + this.nameAccount);
+            System.out.println("enter amount money to withdraw for " + this.getNameAccount());
             Scanner scanner = new Scanner(System.in);
             moneyWantToWithdraw = Double.parseDouble(scanner.nextLine());
             if (moneyWantToWithdraw <= 0) {
@@ -88,8 +88,19 @@ public class Account {
         this.setAccountAmount(this.getAccountAmount() + this.getAccountAmount() * INTEREST);
     }
 
-    public void sendMoneyToAnotherAccount(Account account, double moneyWantToSend) {
-        if (this.getAccountAmount() < moneyWantToSend || moneyWantToSend == this.getAccountAmount()) {
+    public void sendMoneyToAnotherAccount(Account account) {
+        double moneyWantToSend;
+        do {
+            System.out.println("enter amout money to send for " + account.getNameAccount());
+            Scanner scanner = new Scanner(System.in);
+            moneyWantToSend = Double.parseDouble(scanner.nextLine());
+            if (moneyWantToSend <= 0) {
+                System.out.println("invalid amount");
+            } else if (moneyWantToSend > this.getAccountAmount()) {
+                System.out.println("account limit exceeded");
+            }
+        } while (moneyWantToSend <= 0 || moneyWantToSend > this.getAccountAmount());
+        if (this.getAccountAmount() <= moneyWantToSend) {
             System.out.println("can not send !");
         } else {
             System.out.println(this.nameAccount + " sended " + moneyWantToSend + " to " + account.nameAccount);

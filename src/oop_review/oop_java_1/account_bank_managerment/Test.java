@@ -10,9 +10,10 @@ public class Test {
         account2.depositMoney();
         account3.withdrawMoney();
         account2.expire();
-        account3.sendMoneyToAnotherAccount(account1, 1000);
+        account3.sendMoneyToAnotherAccount(account1);
         System.out.println(account1);
         System.out.println(account2);
         System.out.println(account3);
+        account1.depositMoney();
     }
 }

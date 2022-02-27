@@ -3,6 +3,10 @@ package oop_review.oop_java_1.in_out_vehicle_information;
 import java.util.Scanner;
 
 public class MainMenu {
+    private static final int ENTER = 1;
+    private static final int DISPLAY = 2;
+    private static final int EXIT = 3;
+
     public static void main(String[] args) {
         int choice = -1;
         Vehicle[] vehicles = new Vehicle[100];
@@ -11,17 +15,16 @@ public class MainMenu {
             choice = getChoice(input);
 
             switch (choice) {
-                case 1:
+                case ENTER:
                     enterAVehicle(vehicles, input);
                     break;
-                case 2:
+                case DISPLAY:
                     displayTaxOfVehicle(vehicles);
                     break;
-                case 3:
+                case EXIT:
                     System.exit(0);
             }
         } while (choice != 3);
-//        displayTaxOfVehicle(vehicles, count);
     }
 
     private static void displayTaxOfVehicle(Vehicle[] vehicles) {
