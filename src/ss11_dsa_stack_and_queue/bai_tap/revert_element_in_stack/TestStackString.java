@@ -14,6 +14,8 @@ public class TestStackString {
         for (int i = 0; i < mWord.length(); i++) {
             newMWord += wStack.pop();
         }
-        System.out.println(newMWord);
+        String outp = "outp";
+      String newString = outp + newMWord;
+        System.out.println(newString);
     }
 }

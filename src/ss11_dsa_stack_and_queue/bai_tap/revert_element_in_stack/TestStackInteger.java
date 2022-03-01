@@ -7,7 +7,7 @@ public class TestStackInteger {
             stack.add(i);
         }
         System.out.println(stack);
-        for (int i = 0; i < 5; i++) {
+        while (!stack.isEmpty()){
             stack.pop();
         }
         for (int i = 5; i >= 1; i--) {
