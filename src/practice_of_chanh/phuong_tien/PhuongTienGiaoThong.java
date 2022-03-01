@@ -1,5 +1,7 @@
 package practice_of_chanh.phuong_tien;
 
+import java.util.ArrayList;
+
 public abstract class PhuongTienGiaoThong {
    private String bienKiemSoat;
     private String hangSanXuat;

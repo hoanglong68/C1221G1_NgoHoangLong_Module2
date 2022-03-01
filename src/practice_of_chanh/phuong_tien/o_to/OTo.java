@@ -2,14 +2,14 @@ package practice_of_chanh.phuong_tien.o_to;
 
 import practice_of_chanh.phuong_tien.PhuongTienGiaoThong;
 
-public class oTo extends PhuongTienGiaoThong {
+public class OTo extends PhuongTienGiaoThong {
     private int soChoNgoi;
     private String kieuXe;
 
-    public oTo() {
+    public OTo() {
     }
 
-    public oTo(String bienKiemSoat, String hangSanXuat, int namSanXuat, String chuSoHuu, int soChoNgoi, String kieuXe) {
+    public OTo(String bienKiemSoat, String hangSanXuat, int namSanXuat, String chuSoHuu, int soChoNgoi, String kieuXe) {
         super(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu);
         this.soChoNgoi = soChoNgoi;
         this.kieuXe = kieuXe;

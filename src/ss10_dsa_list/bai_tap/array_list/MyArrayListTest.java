@@ -1,48 +1,46 @@
 package ss10_dsa_list.bai_tap.array_list;
 
-import java.util.ArrayList;
+class Dog{
+    private String name;
 
-public class MyArrayListTest {
-    public static class Student {
-        private int id;
-        private String name;
+    public Dog(String name) {
+        this.name = name;
+    }
 
-        public Student() {
+    public String getName() {
+        return name;
+    }
 
-        }
-
-        public Student(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void talk(){
+        System.out.println("Sủa sủa");
     }
 
     public static void main(String[] args) {
-        Student student1 = new Student(1, "A");
-        Student student2 = new Student(2, "B");
-        Student student3 = new Student(3, "C");
-        MyArrayList<Student> studentMyArrayList = new MyArrayList<>();
-        studentMyArrayList.add(student1);
-        studentMyArrayList.add(student2);
-        studentMyArrayList.add(student3);
+        MyList<Dog> dogs = new MyList<>();
+        dogs.add(new Dog("kit"));
+        dogs.add(new Dog("big"));
+        dogs.add(new Dog("Girl"));
+
+        dogs.get(1);
+
+        dogs.size();
+
+        dogs.remove(2);
+        dogs.indexOf(new Dog("kit"));
+
+        dogs.contains(new Dog("big"));
+
+        dogs.add(3,new Dog("Sunny"));
+
+        for (int i = 0; i < dogs.size(); i++) {
+            if(dogs.get(i) != null){
+                System.out.println(dogs.get(i).getName());
+
+            }
         }
     }
-
-
+}
 
