@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public interface IcandidateService {
     ArrayList<Candidate> candidateArrayList = new ArrayList<>();
     void create();
+    void read();
     void update();
     void delete();
     void search();

@@ -1,13 +1,13 @@
 package collection_review.models;
 
 public class InternCandidate extends Candidate {
-    private String majors,universityName;
+    private String majors, universityName;
     private int semester;
 
     public InternCandidate() {
     }
 
-    public InternCandidate(int candidateId, int birthDate, int phone, int candidateType, String firstName, String lastName, String address, String email, String majors, String universityName, int semester) {
+    public InternCandidate(int candidateId, int birthDate, String phone, int candidateType, String firstName, String lastName, String address, String email, String majors, String universityName, int semester) {
         super(candidateId, birthDate, phone, candidateType, firstName, lastName, address, email);
         this.majors = majors;
         this.universityName = universityName;
@@ -40,10 +40,9 @@ public class InternCandidate extends Candidate {
 
     @Override
     public String toString() {
-        return "InternCandidate{" + super.toString() +
+        return super.toString() +
                 "majors='" + majors + '\'' +
                 ", universityName='" + universityName + '\'' +
-                ", semester=" + semester +
-                '}';
+                ", semester='" + semester + '\'';
     }
 }

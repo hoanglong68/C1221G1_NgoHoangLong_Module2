@@ -7,7 +7,7 @@ public class ExperienceCandidate extends Candidate {
     public ExperienceCandidate() {
     }
 
-    public ExperienceCandidate(int candidateId, int birthDate, int phone, int candidateType, String firstName, String lastName, String address, String email, int expInYear, String proSkill) {
+    public ExperienceCandidate(int candidateId, int birthDate, String phone, int candidateType, String firstName, String lastName, String address, String email, int expInYear, String proSkill) {
         super(candidateId, birthDate, phone, candidateType, firstName, lastName, address, email);
         this.expInYear = expInYear;
         this.proSkill = proSkill;
@@ -31,9 +31,8 @@ public class ExperienceCandidate extends Candidate {
 
     @Override
     public String toString() {
-        return "ExperienceCandidate{" + super.toString() +
+        return super.toString() +
                 "expInYear=" + expInYear +
-                ", proSkill='" + proSkill + '\'' +
-                '}';
+                ", proSkill='" + proSkill + '\'';
     }
 }

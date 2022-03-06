@@ -7,7 +7,7 @@ public class FresherCandidate extends Candidate {
     public FresherCandidate() {
     }
 
-    public FresherCandidate(int candidateId, int birthDate, int phone, int candidateType, String firstName, String lastName, String address, String email, int graduationDate, String graduationRank, String education) {
+    public FresherCandidate(int candidateId, int birthDate, String phone, int candidateType, String firstName, String lastName, String address, String email, int graduationDate, String graduationRank, String education) {
         super(candidateId, birthDate, phone, candidateType, firstName, lastName, address, email);
         this.graduationDate = graduationDate;
         this.graduationRank = graduationRank;
@@ -40,10 +40,9 @@ public class FresherCandidate extends Candidate {
 
     @Override
     public String toString() {
-        return "FresherCandidate{" + super.toString() +
+        return super.toString() +
                 "graduationDate=" + graduationDate +
                 ", graduationRank='" + graduationRank + '\'' +
-                ", education='" + education + '\'' +
-                '}';
+                ", education='" + education + '\'';
     }
 }
