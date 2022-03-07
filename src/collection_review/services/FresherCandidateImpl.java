@@ -74,7 +74,7 @@ public class FresherCandidateImpl implements IcandidateService {
     @Override
     public void search() {
         System.out.println("enter first name or last name to search");
-        String name = scanner.nextLine();
+        String name = scanner.nextLine().toLowerCase();
         boolean flag = false;
         for (int i = 0; i < fresherCandidateArrayList.size(); i++) {
             if (fresherCandidateArrayList.get(i).getFirstName().toLowerCase().contains(name) || fresherCandidateArrayList.get(i).getLastName().toLowerCase().contains(name)) {

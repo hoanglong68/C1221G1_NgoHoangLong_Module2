@@ -54,7 +54,7 @@ public class InternCandidateImpl implements IcandidateService {
     @Override
     public void search() {
         System.out.println("enter first name or last name to search");
-        String name = scanner.nextLine();
+        String name = scanner.nextLine().toLowerCase();
         boolean flag = false;
         for (int i = 0; i < internCandidateArrayList.size(); i++) {
             if (internCandidateArrayList.get(i).getFirstName().toLowerCase().contains(name) || internCandidateArrayList.get(i).getLastName().toLowerCase().contains(name)) {

@@ -55,7 +55,7 @@ public class ExperienceCandidateImpl implements IcandidateService {
     @Override
     public void search() {
         System.out.println("enter first name or last name to search");
-        String name = scanner.nextLine();
+        String name = scanner.nextLine().toLowerCase();
         boolean flag = false;
         for (int i = 0; i < experienceCandidateArrayList.size(); i++) {
             if (experienceCandidateArrayList.get(i).getFirstName().toLowerCase().contains(name) || experienceCandidateArrayList.get(i).getLastName().toLowerCase().contains(name)) {
