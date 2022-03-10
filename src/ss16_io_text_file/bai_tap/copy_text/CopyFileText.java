@@ -31,17 +31,20 @@ public static void write(String target,String pathName){
     try {
         FileWriter fileWriter = new FileWriter(target);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write(pathName+" after copy !");
+        bufferedWriter.write(pathName+" after copy chau my!");
         bufferedWriter.close();
         fileWriter.close();
+        if(!target.isEmpty()){
+            System.out.println("file exist");
+        }
     } catch (IOException e) {
         e.printStackTrace();
     }
 }
     public static void main(String[] args) {
-        CopyFileText.read("src\\ss16_io_text_file\\bai_tap\\source.txt");
+        CopyFileText.read("src\\ss16_io_text_file\\bai_tap\\copy_text\\source.txt");
         System.out.println("target before copy !");
-        CopyFileText.write("src\\ss16_io_text_file\\bai_tap\\target.txt",stringList);
-        CopyFileText.read("src\\ss16_io_text_file\\bai_tap\\target.txt");
+        CopyFileText.write("src\\ss16_io_text_file\\bai_tap\\copy_text\\target.txt",stringList);
+        CopyFileText.read("src\\ss16_io_text_file\\bai_tap\\copy_text\\target.txt");
     }
 }
