@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWriteProductFile {
-    public static final String PRODUCTCSV = "src\\ss17_binary_file_and_serialization\\bai_tap\\data\\Product.csv";
+    public static final String PRODUCTCSV = "src\\ss17_binary_file_and_serialization\\bai_tap\\data\\Product.dat";
 
     public static List<Product> readProDuctFile() {
         List<Product> productList = new ArrayList<>();

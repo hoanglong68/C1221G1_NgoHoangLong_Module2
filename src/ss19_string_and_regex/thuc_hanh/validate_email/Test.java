@@ -1,4 +1,6 @@
-package ss19_string_and_regex.thuc_hanh;
+package ss19_string_and_regex.thuc_hanh.validate_email;
+
+import ss19_string_and_regex.thuc_hanh.validate_email.EmailExample;
 
 public class Test {
     private static EmailExample emailExample;
