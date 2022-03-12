@@ -52,7 +52,7 @@ public abstract class Vehicle {
                 "yearOfManufacture=" + yearOfManufacture +
                 ", numberPlate='" + numberPlate + '\'' +
                 ", nameOfManufacture='" + nameOfManufacture + '\'' +
-                ", owner='" + owner + '\''
+                ", owner='" + owner + '\'' + ", "
                 ;
     }
 }

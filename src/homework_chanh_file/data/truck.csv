@@ -1,0 +1,4 @@
+Truck{yearOfManufacture=2019, numberPlate='43C-012.34', nameOfManufacture='Huyndai', owner='Nguyễn Văn A', deadWeight=3}
+Truck{yearOfManufacture=2020, numberPlate='43C-47.678', nameOfManufacture='Dongfeng', owner='Nguyễn Văn B', deadWeight=9}
+Truck{yearOfManufacture=2021, numberPlate='43C-45.235', nameOfManufacture='Hino', owner='Nguyễn Văn C', deadWeight=12}
+

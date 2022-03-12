@@ -17,7 +17,7 @@ public class ProductController {
         id = Integer.parseInt(scanner.nextLine());
         System.out.print("enter name product");
         productName = scanner.nextLine();
-        System.out.print("enter manufacturer");
+        System.out.print("enter manufacturer.csv");
         manufacturer = scanner.nextLine();
         System.out.print("enter price");
         price = Integer.parseInt(scanner.nextLine());

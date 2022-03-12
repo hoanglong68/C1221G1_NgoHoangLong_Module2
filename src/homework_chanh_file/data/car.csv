@@ -1,0 +1,3 @@
+Car{yearOfManufacture=2019, numberPlate='43A-212.56', nameOfManufacture='Toyota', owner='Nguyễn Văn A', numberOfSeat=5, carType='Du lịch'}
+Car{yearOfManufacture=2020, numberPlate='43B-453.88', nameOfManufacture='Huyndai', owner='Nguyễn Văn B', numberOfSeat=45, carType='Xe khách'}
+Car{yearOfManufacture=2020, numberPlate='43B-453.89', nameOfManufacture='Ford', owner='Nguyễn Văn C', numberOfSeat=16, carType='Xe khách'}

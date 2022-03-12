@@ -1,0 +1,4 @@
+MoToBike{yearOfManufacture=2019, numberPlate='43-K1-678.56', nameOfManufacture='Yamaha', owner='Nguyễn Văn A', wattage=100}
+MoToBike{yearOfManufacture=2019, numberPlate='43-H1-345.89', nameOfManufacture='Honda', owner='Nguyễn Văn B', wattage=150}
+MoToBike{yearOfManufacture=2019, numberPlate='43-AK-765.23', nameOfManufacture='Yamaha', owner='Nguyễn Văn C', wattage=50}
+
