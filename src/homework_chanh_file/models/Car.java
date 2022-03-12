@@ -3,7 +3,7 @@ package homework_chanh_file.models;
 public class Car extends Vehicle {
     private int numberOfSeat;
     private String carType;
-
+    private static final String COMMA = ",";
     public Car() {
     }
 
@@ -31,9 +31,9 @@ public class Car extends Vehicle {
 
     @Override
     public String toString() {
-        return "Car{" + super.toString() +
-                "numberOfSeat=" + numberOfSeat +
-                ", carType='" + carType + '\'' +
-                '}';
+        return super.toString() + COMMA+
+                numberOfSeat + COMMA+
+                carType
+                ;
     }
 }

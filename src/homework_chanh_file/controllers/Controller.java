@@ -13,7 +13,7 @@ public class Controller {
     public void mainMenu() {
         do {
             System.out.println(
-                    "-----CHƯƠNG TRÌNH QUẢN LÝ PHƯƠNG TIỆN GIAO THÔNG-----\n" +
+                    "\n-----CHƯƠNG TRÌNH QUẢN LÝ PHƯƠNG TIỆN GIAO THÔNG-----\n" +
                             "select function:\n" +
                             "1. add new vehicle\n" +
                             "2. display vehicle\n" +
@@ -75,6 +75,7 @@ public class Controller {
                     motorBikeController.remove(findNumberPlate);
                     break;
                 case 4:
+
                     System.exit(4);
                 default:
                     System.out.println("wrong choice ! please try again");

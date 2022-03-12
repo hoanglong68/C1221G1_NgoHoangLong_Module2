@@ -2,6 +2,7 @@ package homework_chanh_file.models;
 
 public class MotorBike extends Vehicle {
     private int wattage;
+    private static final String COMMA = ",";
 
     public MotorBike() {
     }
@@ -21,8 +22,8 @@ public class MotorBike extends Vehicle {
 
     @Override
     public String toString() {
-        return "MoToBike{" + super.toString() +
-                "wattage=" + wattage +
-                '}';
+        return super.toString() + COMMA +
+                wattage
+                ;
     }
 }

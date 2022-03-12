@@ -2,6 +2,7 @@ package homework_chanh_file.models;
 
 public class Truck extends Vehicle {
     private int deadWeight;
+    private static final String COMMA = ",";
 
     public Truck() {
     }
@@ -21,8 +22,8 @@ public class Truck extends Vehicle {
 
     @Override
     public String toString() {
-        return "Truck{" + super.toString() +
-                "deadWeight=" + deadWeight +
-                '}';
+        return super.toString() + COMMA +
+                deadWeight
+                ;
     }
 }

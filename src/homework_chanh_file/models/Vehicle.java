@@ -1,8 +1,9 @@
 package homework_chanh_file.models;
 
 public abstract class Vehicle {
-   private int yearOfManufacture;
-   private String numberPlate, nameOfManufacture, owner;
+    private int yearOfManufacture;
+    private String numberPlate, nameOfManufacture, owner;
+    private static final String COMMA = ",";
 
     public Vehicle() {
     }
@@ -48,11 +49,10 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return
-                "yearOfManufacture=" + yearOfManufacture +
-                ", numberPlate='" + numberPlate + '\'' +
-                ", nameOfManufacture='" + nameOfManufacture + '\'' +
-                ", owner='" + owner + '\'' + ", "
+        return yearOfManufacture + COMMA +
+                numberPlate + COMMA +
+                nameOfManufacture + COMMA +
+                owner
                 ;
     }
 }

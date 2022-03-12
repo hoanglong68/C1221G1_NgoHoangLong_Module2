@@ -1,5 +1,7 @@
 package homework_chanh_file.utils;
 
+import homework_chanh_file.models.Vehicle;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,9 @@ import java.util.List;
 public class IoTextFile {
 
     private static File file = null;
+    public static void closeFile(){
 
+    }
 
     public static List<String> readFromCSVFile(String pathFile) {
         List<String> stringList = new ArrayList<>();
@@ -16,25 +20,25 @@ public class IoTextFile {
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-//            bufferedReader.close();
-//            fileReader.close();
-             String line;
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 stringList.add(line);
             }
+            bufferedReader.close();
+            fileReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return stringList;
     }
 
-    public static <T> void writeToCSVFile(String pathFile, List<T> tList, boolean append) {
+    public static void writeToCSVFile(String pathFile, List<? extends Vehicle> vehicleList, boolean append) {
         file = new File(pathFile);
         try {
             FileWriter fileWriter = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (T t : tList) {
-                bufferedWriter.write(t.toString());
+            for (Vehicle vehicle : vehicleList) {
+                bufferedWriter.write(vehicle.toString());
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
