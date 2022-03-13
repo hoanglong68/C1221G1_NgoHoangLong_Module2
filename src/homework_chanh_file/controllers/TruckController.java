@@ -16,6 +16,15 @@ public class TruckController {
     private static TruckServiceImpl truckService = new TruckServiceImpl();
     private static final String TRUCK_CSV = "src\\homework_chanh_file\\data\\truck.csv";
     private static final List<String> manufacturerList;
+
+    public static TruckServiceImpl getTruckService() {
+        return truckService;
+    }
+
+    public static void setTruckService(TruckServiceImpl truckService) {
+        TruckController.truckService = truckService;
+    }
+
     static {
         convertStringListToTruckList();
         manufacturerList = IoTextFile.readFromCSVFile("src\\homework_chanh_file\\data\\manufacturer.csv");
@@ -27,7 +36,6 @@ public class TruckController {
         deadWeight = Integer.parseInt(scanner.nextLine());
         Truck truck = new Truck(numberPlate, nameOfManufacture, yearOfManufacture, owner, deadWeight);
         truckService.create(truck);
-        IoTextFile.writeToCSVFile(TRUCK_CSV,truckService.getTruckList(),false);
     }
 
     public void display() {
@@ -35,23 +43,31 @@ public class TruckController {
     }
 
     public void remove(String findNumberPlate) throws NotFoundVehicleException {
+        boolean flag = false;
         for (int i = 0; i < truckService.getTruckList().size(); i++) {
             if (truckService.getTruckList().get(i).getNumberPlate().equals(findNumberPlate.toUpperCase())) {
+                flag = true;
                 System.out.println(truckService.getTruckList().get(i));
                 System.out.println("YES or NO");
                 String confirm = scanner.nextLine();
                 if ("YES".equals(confirm.toUpperCase())) {
                     truckService.delete(truckService.getTruckList().get(i));
                     System.out.println("delete completed !");
-                    break;
+                    System.out.println("enter to comeback menu !");
+                    confirm = scanner.nextLine();
+                    if ("".equals(confirm)){
+                        break;
+                    }
                 } else if ("NO".equals(confirm.toUpperCase())) {
                     break;
                 }
-            }else {
-                throw new NotFoundVehicleException();
             }
         }
+        if (!flag){
+            throw new NotFoundVehicleException();
+        }
     }
+
 
     public void baseInfo() {
         System.out.print("enter number plate: ");
@@ -61,27 +77,27 @@ public class TruckController {
         }
         System.out.print("enter name of manufacture: ");
         int choose = Integer.parseInt(scanner.nextLine());
-        switch (choose){
+        switch (choose) {
             case 1:
-                nameOfManufacture = manufacturerList.get(0).substring(8,15);
+                nameOfManufacture = manufacturerList.get(0).substring(8, 14);
                 break;
             case 2:
-                nameOfManufacture = manufacturerList.get(1).substring(8,14);
+                nameOfManufacture = manufacturerList.get(1).substring(8, 13);
                 break;
             case 3:
-                nameOfManufacture = manufacturerList.get(2).substring(8,17);
+                nameOfManufacture = manufacturerList.get(2).substring(8, 16);
                 break;
             case 4:
-                nameOfManufacture = manufacturerList.get(3).substring(8,16);
+                nameOfManufacture = manufacturerList.get(3).substring(8, 15);
                 break;
             case 5:
-                nameOfManufacture = manufacturerList.get(4).substring(8,13);
+                nameOfManufacture = manufacturerList.get(4).substring(8, 12);
                 break;
             case 6:
-                nameOfManufacture = manufacturerList.get(5).substring(8,15);
+                nameOfManufacture = manufacturerList.get(5).substring(8, 14);
                 break;
             case 7:
-                nameOfManufacture = manufacturerList.get(6).substring(8,13);
+                nameOfManufacture = manufacturerList.get(6).substring(8, 12);
                 break;
             default:
                 System.err.println("wrong choice !");

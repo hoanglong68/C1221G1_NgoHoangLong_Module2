@@ -1,5 +1,6 @@
 package homework_chanh_file.controllers;
 
+import homework_chanh_file.utils.IoTextFile;
 import homework_chanh_file.utils.NotFoundVehicleException;
 
 import java.util.Scanner;
@@ -10,6 +11,10 @@ public class Controller {
     CarController carController = new CarController();
     TruckController truckController = new TruckController();
     MotorBikeController motorBikeController = new MotorBikeController();
+    private static final String CAR_CSV = "src\\homework_chanh_file\\data\\car.csv";
+    private static final String TRUCK_CSV = "src\\homework_chanh_file\\data\\truck.csv";
+    private static final String MOTORBIKE_CSV = "src\\homework_chanh_file\\data\\motorbike.csv";
+
     public void mainMenu() {
         do {
             System.out.println(
@@ -18,7 +23,7 @@ public class Controller {
                             "1. add new vehicle\n" +
                             "2. display vehicle\n" +
                             "3. remove vehicle\n" +
-                            "4. end program\n" +
+                            "4. save and end program\n" +
                             "---enter your choice---"
             );
             choice = Integer.parseInt(scanner.nextLine());
@@ -53,7 +58,7 @@ public class Controller {
                     );
                     System.out.println("enter your choice");
                     choice = Integer.parseInt(scanner.nextLine());
-                    switch (choice){
+                    switch (choice) {
                         case 1:
                             carController.display();
                             break;
@@ -69,21 +74,39 @@ public class Controller {
                     break;
                 case 3:
                     String findNumberPlate;
+                    int count;
                     do {
-                    System.out.println("enter number plate");
-                    findNumberPlate = scanner.nextLine();
-                    try{
-                        carController.remove(findNumberPlate);
-                        truckController.remove(findNumberPlate);
-                        motorBikeController.remove(findNumberPlate);
-                    } catch (NotFoundVehicleException e) {
-                        e.printStackTrace();
-                    }
-                    }while (!findNumberPlate.equals(""));
-                    break;  
+                        count = 0;
+                        System.out.println("enter number plate");
+                        findNumberPlate = scanner.nextLine();
+                        try {
+                            carController.remove(findNumberPlate);
+                        } catch (NotFoundVehicleException e) {
+                            count++;
+                            try {
+                                truckController.remove(findNumberPlate);
+                            } catch (NotFoundVehicleException e1) {
+                                count++;
+                                try {
+                                    motorBikeController.remove(findNumberPlate);
+                                } catch (NotFoundVehicleException e2) {
+                                    count++;
+                                }
+                            }
+                            if (count ==3){
+                                if ("".equals(findNumberPlate)){
+                                    break;
+                                }
+                                e.printStackTrace();
+                            }
+                        }
+                    } while (count == 3);
+                    break;
                 case 4:
-
-                    System.exit(4);
+                    IoTextFile.writeToCSVFile(CAR_CSV, CarController.getCarService().getCarList(), false);
+                    IoTextFile.writeToCSVFile(TRUCK_CSV, TruckController.getTruckService().getTruckList(), false);
+                    IoTextFile.writeToCSVFile(MOTORBIKE_CSV, MotorBikeController.getMotorBikeService().getMotorBikeList(), false);
+                    break;
                 default:
                     System.out.println("wrong choice ! please try again");
             }

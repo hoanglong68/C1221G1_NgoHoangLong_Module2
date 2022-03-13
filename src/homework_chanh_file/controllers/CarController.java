@@ -18,6 +18,14 @@ public class CarController {
     private static final String CAR_CSV = "src\\homework_chanh_file\\data\\car.csv";
     private static final List<String> manufacturerList;
 
+    public static CarServiceImpl getCarService() {
+        return carService;
+    }
+
+    public static void setCarService(CarServiceImpl carService) {
+        CarController.carService = carService;
+    }
+
     static {
         convertStringListToCarList();
         manufacturerList = IoTextFile.readFromCSVFile("src\\homework_chanh_file\\data\\manufacturer.csv");
@@ -28,10 +36,10 @@ public class CarController {
         System.out.print("enter number of seat: ");
         numberOfSeat = Integer.parseInt(scanner.nextLine());
         System.out.print("enter type of car: ");
+        System.out.println();
         carType = scanner.nextLine();
         Car car = new Car(numberPlate, nameOfManufacture, yearOfManufacture, owner, numberOfSeat, carType);
         carService.create(car);
-        IoTextFile.writeToCSVFile(CAR_CSV, carService.getCarList(), false);
     }
 
     public void display() {
@@ -39,21 +47,28 @@ public class CarController {
     }
 
     public void remove(String findNumberPlate) throws NotFoundVehicleException {
+        boolean flag = false;
         for (int i = 0; i < carService.getCarList().size(); i++) {
             if (carService.getCarList().get(i).getNumberPlate().equals(findNumberPlate.toUpperCase())) {
+                flag = true;
                 System.out.println(carService.getCarList().get(i));
                 System.out.println("YES or NO");
                 String confirm = scanner.nextLine();
                 if ("YES".equals(confirm.toUpperCase())) {
                     carService.delete(carService.getCarList().get(i));
                     System.out.println("delete completed !");
-                    break;
+                    System.out.println("enter to comeback menu !");
+                    confirm = scanner.nextLine();
+                    if ("".equals(confirm)){
+                        break;
+                    }
                 } else if ("NO".equals(confirm.toUpperCase())) {
                     break;
                 }
-            }else {
-                throw new NotFoundVehicleException();
             }
+        }
+        if (!flag){
+            throw new NotFoundVehicleException();
         }
     }
 
@@ -65,27 +80,27 @@ public class CarController {
         }
         System.out.print("choose name of manufacture: ");
         int choose = Integer.parseInt(scanner.nextLine());
-        switch (choose){
+        switch (choose) {
             case 1:
-                nameOfManufacture = manufacturerList.get(0).substring(8,14);
+                nameOfManufacture = manufacturerList.get(0).substring(8, 14);
                 break;
             case 2:
-                nameOfManufacture = manufacturerList.get(1).substring(8,13);
+                nameOfManufacture = manufacturerList.get(1).substring(8, 13);
                 break;
             case 3:
-                nameOfManufacture = manufacturerList.get(2).substring(8,16);
+                nameOfManufacture = manufacturerList.get(2).substring(8, 16);
                 break;
             case 4:
-                nameOfManufacture = manufacturerList.get(3).substring(8,15);
+                nameOfManufacture = manufacturerList.get(3).substring(8, 15);
                 break;
             case 5:
-                nameOfManufacture = manufacturerList.get(4).substring(8,12);
+                nameOfManufacture = manufacturerList.get(4).substring(8, 12);
                 break;
             case 6:
-                nameOfManufacture = manufacturerList.get(5).substring(8,14);
+                nameOfManufacture = manufacturerList.get(5).substring(8, 14);
                 break;
             case 7:
-                nameOfManufacture = manufacturerList.get(6).substring(8,13);
+                nameOfManufacture = manufacturerList.get(6).substring(8, 13);
                 break;
             default:
                 System.err.println("wrong choice !");

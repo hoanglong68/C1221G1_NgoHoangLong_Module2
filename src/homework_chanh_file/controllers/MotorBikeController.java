@@ -14,20 +14,29 @@ public class MotorBikeController {
     private String numberPlate, nameOfManufacture, owner;
     private int wattage;
     Scanner scanner = new Scanner(System.in);
-   private static MotorBikeServiceImpl motorBikeService = new MotorBikeServiceImpl();
+    private static MotorBikeServiceImpl motorBikeService = new MotorBikeServiceImpl();
     private static final String MOTORBIKE_CSV = "src\\homework_chanh_file\\data\\motorbike.csv";
     private static final List<String> manufacturerList;
+
+    public static MotorBikeServiceImpl getMotorBikeService() {
+        return motorBikeService;
+    }
+
+    public static void setMotorBikeService(MotorBikeServiceImpl motorBikeService) {
+        MotorBikeController.motorBikeService = motorBikeService;
+    }
+
     static {
         convertStringListToMotorBikeList();
         manufacturerList = IoTextFile.readFromCSVFile("src\\homework_chanh_file\\data\\manufacturer.csv");
     }
+
     public void add() {
         this.baseInfo();
         System.out.print("enter dead weight: ");
         wattage = Integer.parseInt(scanner.nextLine());
         MotorBike motorBike = new MotorBike(numberPlate, nameOfManufacture, yearOfManufacture, owner, wattage);
         motorBikeService.create(motorBike);
-        IoTextFile.writeToCSVFile(MOTORBIKE_CSV,motorBikeService.getMotorBikeList(),false);
     }
 
     public void display() {
@@ -35,23 +44,32 @@ public class MotorBikeController {
     }
 
     public void remove(String findNumberPlate) throws NotFoundVehicleException {
+        boolean flag = false;
         for (int i = 0; i < motorBikeService.getMotorBikeList().size(); i++) {
-            if (motorBikeService.getMotorBikeList().get(i).getNumberPlate().equals(findNumberPlate.toUpperCase())){
+            if (motorBikeService.getMotorBikeList().get(i).getNumberPlate().equals(findNumberPlate.toUpperCase())) {
+                flag = true;
                 System.out.println(motorBikeService.getMotorBikeList().get(i));
                 System.out.println("YES or NO");
                 String confirm = scanner.nextLine();
                 if ("YES".equals(confirm.toUpperCase())) {
                     motorBikeService.delete(motorBikeService.getMotorBikeList().get(i));
                     System.out.println("delete completed !");
-                    break;
+                    System.out.println("enter to comeback menu !");
+                    confirm = scanner.nextLine();
+                    if ("".equals(confirm)){
+                        break;
+                    }
                 } else if ("NO".equals(confirm.toUpperCase())) {
                     break;
                 }
-            }else {
-                throw new NotFoundVehicleException();
             }
         }
+        if (!flag){
+            throw new NotFoundVehicleException();
+        }
     }
+
+
     public void baseInfo() {
         System.out.print("enter number plate: ");
         numberPlate = scanner.nextLine();
@@ -60,27 +78,27 @@ public class MotorBikeController {
         }
         System.out.print("enter name of manufacture: ");
         int choose = Integer.parseInt(scanner.nextLine());
-        switch (choose){
+        switch (choose) {
             case 1:
-                nameOfManufacture = manufacturerList.get(0).substring(8,15);
+                nameOfManufacture = manufacturerList.get(0).substring(8, 14);
                 break;
             case 2:
-                nameOfManufacture = manufacturerList.get(1).substring(8,14);
+                nameOfManufacture = manufacturerList.get(1).substring(8, 13);
                 break;
             case 3:
-                nameOfManufacture = manufacturerList.get(2).substring(8,17);
+                nameOfManufacture = manufacturerList.get(2).substring(8, 16);
                 break;
             case 4:
-                nameOfManufacture = manufacturerList.get(3).substring(8,16);
+                nameOfManufacture = manufacturerList.get(3).substring(8, 15);
                 break;
             case 5:
-                nameOfManufacture = manufacturerList.get(4).substring(8,13);
+                nameOfManufacture = manufacturerList.get(4).substring(8, 12);
                 break;
             case 6:
-                nameOfManufacture = manufacturerList.get(5).substring(8,15);
+                nameOfManufacture = manufacturerList.get(5).substring(8, 14);
                 break;
             case 7:
-                nameOfManufacture = manufacturerList.get(6).substring(8,13);
+                nameOfManufacture = manufacturerList.get(6).substring(8, 12);
                 break;
             default:
                 System.err.println("wrong choice !");
@@ -90,12 +108,13 @@ public class MotorBikeController {
         System.out.print("enter owner: ");
         owner = scanner.nextLine();
     }
+
     public static void convertStringListToMotorBikeList() {
         List<String> stringList = IoTextFile.readFromCSVFile(MOTORBIKE_CSV);
         String array[];
         for (int i = 0; i < stringList.size(); i++) {
             array = stringList.get(i).split(",");
-            MotorBike motorBike = new MotorBike(array[0],array[1],Integer.parseInt(array[2]),array[3],Integer.parseInt(array[4]));
+            MotorBike motorBike = new MotorBike(array[0], array[1], Integer.parseInt(array[2]), array[3], Integer.parseInt(array[4]));
             motorBikeService.create(motorBike);
         }
     }
