@@ -80,7 +80,7 @@ public class Controller {
                         e.printStackTrace();
                     }
                     }while (!findNumberPlate.equals(""));
-                    break;
+                    break;  
                 case 4:
 
                     System.exit(4);

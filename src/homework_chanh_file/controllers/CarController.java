@@ -63,8 +63,34 @@ public class CarController {
         for (int i = 0; i < manufacturerList.size(); i++) {
             System.out.println(i + 1 + ": " + manufacturerList.get(i));
         }
-        System.out.print("enter name of manufacture: ");
-        nameOfManufacture = scanner.nextLine();
+        System.out.print("choose name of manufacture: ");
+        int choose = Integer.parseInt(scanner.nextLine());
+        switch (choose){
+            case 1:
+                nameOfManufacture = manufacturerList.get(0).substring(8,14);
+                break;
+            case 2:
+                nameOfManufacture = manufacturerList.get(1).substring(8,13);
+                break;
+            case 3:
+                nameOfManufacture = manufacturerList.get(2).substring(8,16);
+                break;
+            case 4:
+                nameOfManufacture = manufacturerList.get(3).substring(8,15);
+                break;
+            case 5:
+                nameOfManufacture = manufacturerList.get(4).substring(8,12);
+                break;
+            case 6:
+                nameOfManufacture = manufacturerList.get(5).substring(8,14);
+                break;
+            case 7:
+                nameOfManufacture = manufacturerList.get(6).substring(8,13);
+                break;
+            default:
+                System.err.println("wrong choice !");
+        }
+
         System.out.print("enter year of manufacture: ");
         yearOfManufacture = Integer.parseInt(scanner.nextLine());
         System.out.print("enter owner: ");
