@@ -3,6 +3,8 @@ package homework_chanh_file.controllers;
 import homework_chanh_file.models.MotorBike;
 import homework_chanh_file.services.MotorBikeServiceImpl;
 import homework_chanh_file.utils.IoTextFile;
+import homework_chanh_file.utils.NotFoundVehicleException;
+
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,8 +16,10 @@ public class MotorBikeController {
     Scanner scanner = new Scanner(System.in);
    private static MotorBikeServiceImpl motorBikeService = new MotorBikeServiceImpl();
     private static final String MOTORBIKE_CSV = "src\\homework_chanh_file\\data\\motorbike.csv";
+    private static final List<String> manufacturerList;
     static {
         convertStringListToMotorBikeList();
+        manufacturerList = IoTextFile.readFromCSVFile("src\\homework_chanh_file\\data\\manufacturer.csv");
     }
     public void add() {
         this.baseInfo();
@@ -30,24 +34,30 @@ public class MotorBikeController {
         motorBikeService.read();
     }
 
-    public void remove(String findNumberPlate) {
+    public void remove(String findNumberPlate) throws NotFoundVehicleException {
         for (int i = 0; i < motorBikeService.getMotorBikeList().size(); i++) {
-            if (motorBikeService.getMotorBikeList().get(i).getNumberPlate().contains(findNumberPlate)){
+            if (motorBikeService.getMotorBikeList().get(i).getNumberPlate().equals(findNumberPlate.toUpperCase())){
+                System.out.println(motorBikeService.getMotorBikeList().get(i));
                 System.out.println("YES or NO");
-                String confirm = scanner.nextLine().toUpperCase();
-                if ("YES".contains(confirm)) {
+                String confirm = scanner.nextLine();
+                if ("YES".equals(confirm.toUpperCase())) {
                     motorBikeService.delete(motorBikeService.getMotorBikeList().get(i));
                     System.out.println("delete completed !");
                     break;
-                } else if ("NO".contains(confirm)) {
+                } else if ("NO".equals(confirm.toUpperCase())) {
                     break;
                 }
+            }else {
+                throw new NotFoundVehicleException();
             }
         }
     }
     public void baseInfo() {
         System.out.print("enter number plate: ");
         numberPlate = scanner.nextLine();
+        for (int i = 0; i < manufacturerList.size(); i++) {
+            System.out.println(i + 1 + ": " + manufacturerList.get(i));
+        }
         System.out.print("enter name of manufacture: ");
         nameOfManufacture = scanner.nextLine();
         System.out.print("enter year of manufacture: ");

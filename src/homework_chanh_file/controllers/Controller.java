@@ -1,5 +1,6 @@
 package homework_chanh_file.controllers;
 
+import homework_chanh_file.utils.NotFoundVehicleException;
 
 import java.util.Scanner;
 
@@ -9,7 +10,6 @@ public class Controller {
     CarController carController = new CarController();
     TruckController truckController = new TruckController();
     MotorBikeController motorBikeController = new MotorBikeController();
-    private static final String MANUFACTURER_CSV = "src\\homework_chanh_file\\data\\manufacturer.csv";
     public void mainMenu() {
         do {
             System.out.println(
@@ -68,11 +68,18 @@ public class Controller {
                     }
                     break;
                 case 3:
+                    String findNumberPlate;
+                    do {
                     System.out.println("enter number plate");
-                    String findNumberPlate = scanner.nextLine();
-                    carController.remove(findNumberPlate);
-                    truckController.remove(findNumberPlate);
-                    motorBikeController.remove(findNumberPlate);
+                    findNumberPlate = scanner.nextLine();
+                    try{
+                        carController.remove(findNumberPlate);
+                        truckController.remove(findNumberPlate);
+                        motorBikeController.remove(findNumberPlate);
+                    } catch (NotFoundVehicleException e) {
+                        e.printStackTrace();
+                    }
+                    }while (!findNumberPlate.equals(""));
                     break;
                 case 4:
 

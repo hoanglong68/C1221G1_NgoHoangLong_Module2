@@ -10,9 +10,6 @@ import java.util.List;
 public class IoTextFile {
 
     private static File file = null;
-    public static void closeFile(){
-
-    }
 
     public static List<String> readFromCSVFile(String pathFile) {
         List<String> stringList = new ArrayList<>();

@@ -1,5 +1,6 @@
 package homework_chanh_file.models;
 
+
 public abstract class Vehicle {
     private int yearOfManufacture;
     private String numberPlate, nameOfManufacture, owner;
@@ -49,10 +50,11 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return yearOfManufacture + COMMA +
+        return
                 numberPlate + COMMA +
-                nameOfManufacture + COMMA +
-                owner
+                        nameOfManufacture + COMMA +
+                        yearOfManufacture + COMMA +
+                        owner
                 ;
     }
 }
