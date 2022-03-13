@@ -2,6 +2,7 @@ package homework_chanh_file.controllers;
 
 import homework_chanh_file.models.Car;
 import homework_chanh_file.services.CarServiceImpl;
+import homework_chanh_file.utils.CheckNumberPlate;
 import homework_chanh_file.utils.IoTextFile;
 import homework_chanh_file.utils.NotFoundVehicleException;
 
@@ -32,13 +33,29 @@ public class CarController {
     }
 
     public void add() {
+        int choose;
         this.baseInfo();
         System.out.print("enter number of seat: ");
         numberOfSeat = Integer.parseInt(scanner.nextLine());
-        System.out.print("enter type of car: ");
-        System.out.println();
-        carType = scanner.nextLine();
-        Car car = new Car(numberPlate, nameOfManufacture, yearOfManufacture, owner, numberOfSeat, carType);
+        do {
+            System.out.println("1(A). Du lịch\n" +
+                    "2(B). Xe khách"
+            );
+            System.out.println(numberPlate.toUpperCase());
+            System.out.print("choose type of car: ");
+            choose = Integer.parseInt(scanner.nextLine());
+            switch (choose) {
+                case 1:
+                    carType = "Du lịch";
+                    break;
+                case 2:
+                    carType = "Xe khách";
+                    break;
+                default:
+                    System.out.println("wrong choice !");
+            }
+        } while (choose > 2 || choose < 0);
+        Car car = new Car(numberPlate.toUpperCase(), nameOfManufacture, yearOfManufacture, owner, numberOfSeat, carType);
         carService.create(car);
     }
 
@@ -59,7 +76,7 @@ public class CarController {
                     System.out.println("delete completed !");
                     System.out.println("enter to comeback menu !");
                     confirm = scanner.nextLine();
-                    if ("".equals(confirm)){
+                    if ("".equals(confirm)) {
                         break;
                     }
                 } else if ("NO".equals(confirm.toUpperCase())) {
@@ -67,14 +84,20 @@ public class CarController {
                 }
             }
         }
-        if (!flag){
+        if (!flag) {
             throw new NotFoundVehicleException();
         }
     }
 
     public void baseInfo() {
-        System.out.print("enter number plate: ");
-        numberPlate = scanner.nextLine();
+        boolean flag;
+        do {
+            System.out.print("enter number plate: \n(XXA[du lịch]-XXX.XX)\n"
+                    + "(XXB[xe khách]-XXX.XX) "
+            );
+            numberPlate = scanner.nextLine();
+            flag = CheckNumberPlate.checkNumberPlate(numberPlate.toUpperCase(), 1);
+        } while (!flag);
         for (int i = 0; i < manufacturerList.size(); i++) {
             System.out.println(i + 1 + ": " + manufacturerList.get(i));
         }

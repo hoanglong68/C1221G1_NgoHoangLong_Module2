@@ -2,6 +2,7 @@ package homework_chanh_file.controllers;
 
 import homework_chanh_file.models.MotorBike;
 import homework_chanh_file.services.MotorBikeServiceImpl;
+import homework_chanh_file.utils.CheckNumberPlate;
 import homework_chanh_file.utils.IoTextFile;
 import homework_chanh_file.utils.NotFoundVehicleException;
 
@@ -35,7 +36,7 @@ public class MotorBikeController {
         this.baseInfo();
         System.out.print("enter dead weight: ");
         wattage = Integer.parseInt(scanner.nextLine());
-        MotorBike motorBike = new MotorBike(numberPlate, nameOfManufacture, yearOfManufacture, owner, wattage);
+        MotorBike motorBike = new MotorBike(numberPlate.toUpperCase(), nameOfManufacture, yearOfManufacture, owner, wattage);
         motorBikeService.create(motorBike);
     }
 
@@ -71,8 +72,12 @@ public class MotorBikeController {
 
 
     public void baseInfo() {
-        System.out.print("enter number plate: ");
-        numberPlate = scanner.nextLine();
+        boolean flag;
+        do {
+            System.out.print("enter number plate: (XX-YZ-XXX.XX)");
+            numberPlate = scanner.nextLine();
+            flag = CheckNumberPlate.checkNumberPlate(numberPlate.toUpperCase(), 3);
+        } while (!flag);
         for (int i = 0; i < manufacturerList.size(); i++) {
             System.out.println(i + 1 + ": " + manufacturerList.get(i));
         }

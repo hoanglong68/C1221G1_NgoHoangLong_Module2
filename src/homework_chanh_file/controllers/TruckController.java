@@ -2,6 +2,7 @@ package homework_chanh_file.controllers;
 
 import homework_chanh_file.models.Truck;
 import homework_chanh_file.services.TruckServiceImpl;
+import homework_chanh_file.utils.CheckNumberPlate;
 import homework_chanh_file.utils.IoTextFile;
 import homework_chanh_file.utils.NotFoundVehicleException;
 
@@ -34,7 +35,7 @@ public class TruckController {
         this.baseInfo();
         System.out.print("enter dead weight: ");
         deadWeight = Integer.parseInt(scanner.nextLine());
-        Truck truck = new Truck(numberPlate, nameOfManufacture, yearOfManufacture, owner, deadWeight);
+        Truck truck = new Truck(numberPlate.toUpperCase(), nameOfManufacture, yearOfManufacture, owner, deadWeight);
         truckService.create(truck);
     }
 
@@ -55,7 +56,7 @@ public class TruckController {
                     System.out.println("delete completed !");
                     System.out.println("enter to comeback menu !");
                     confirm = scanner.nextLine();
-                    if ("".equals(confirm)){
+                    if ("".equals(confirm)) {
                         break;
                     }
                 } else if ("NO".equals(confirm.toUpperCase())) {
@@ -63,15 +64,19 @@ public class TruckController {
                 }
             }
         }
-        if (!flag){
+        if (!flag) {
             throw new NotFoundVehicleException();
         }
     }
 
 
     public void baseInfo() {
-        System.out.print("enter number plate: ");
-        numberPlate = scanner.nextLine();
+        boolean flag;
+        do {
+            System.out.print("enter number plate: (XXC-XXX.XX)");
+            numberPlate = scanner.nextLine();
+            flag = CheckNumberPlate.checkNumberPlate(numberPlate.toUpperCase(), 2);
+        } while (!flag);
         for (int i = 0; i < manufacturerList.size(); i++) {
             System.out.println(i + 1 + ": " + manufacturerList.get(i));
         }
