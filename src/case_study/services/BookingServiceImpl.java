@@ -12,7 +12,7 @@ public class BookingServiceImpl implements IBookingService{
     }
 
     @Override
-    public void update() {
+    public void update(int index) {
 
     }
 }

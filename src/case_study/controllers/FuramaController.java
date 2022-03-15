@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class FuramaController {
     private int choice = -1;
     private Scanner scanner = new Scanner(System.in);
-
+    EmployeeController employeeController = new EmployeeController();
+    CustomerController customerController = new CustomerController();
     public void mainMenu() {
         do {
             System.out.println("---FURAMA MANAGEMENT PROGRAM---");
@@ -27,10 +28,13 @@ public class FuramaController {
                     choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
+                            employeeController.displayEmployeeList();
                             break;
                         case 2:
+                            employeeController.addNewEmployee();
                             break;
                         case 3:
+                            employeeController.editEmployeeInfo();
                             break;
                         case 4:
                             break;
@@ -47,10 +51,13 @@ public class FuramaController {
                     choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
+                            customerController.displayCustomerList();
                             break;
                         case 2:
+                            customerController.addNewCustomer();
                             break;
                         case 3:
+                            customerController.editCustomerInfo();
                             break;
                         case 4:
                             break;

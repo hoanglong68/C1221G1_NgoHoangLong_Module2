@@ -13,7 +13,7 @@ public class ContractServiceImpl implements IContractService{
 
 
     @Override
-    public void update() {
+    public void update(int index) {
 
     }
 }

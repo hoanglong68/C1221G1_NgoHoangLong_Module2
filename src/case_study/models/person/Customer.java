@@ -2,7 +2,6 @@ package case_study.models.person;
 
 public class Customer extends Person {
     private String idCustomer, typeOfCustomer, address;
-
     public Customer() {
     }
 
