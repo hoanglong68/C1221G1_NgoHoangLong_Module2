@@ -1,27 +1,31 @@
 package case_study.services.facility_service;
 
 import case_study.models.facility.Room;
+import case_study.utils.CheckValid;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class RoomServiceImpl extends FacilityServiceImpl{
+public class RoomServiceImpl extends FacilityServiceImpl {
     private String freeService;
     private String idRoom;
     Scanner scanner = new Scanner(System.in);
+    private static final String REGEX_ID_ROOM = "^(SVRO)[-][\\d]{4}$";
     private static List<Room> roomList = new ArrayList<>();
+
     static {
-        Room room1 = new Room("SVRO-0001","Room1",500,200,2,"days","non");
-        Room room2 =new Room("SVRO-0002","Room2",700,250,2,"days","non");
-        Room room3 =new Room("SVRO-0003","Room3",800,300,2,"months","lunch");
+        Room room1 = new Room("SVRO-0001", "Room1", 500, 200, 2, "days", "non");
+        Room room2 = new Room("SVRO-0002", "Room2", 700, 250, 2, "days", "non");
+        Room room3 = new Room("SVRO-0003", "Room3", 800, 300, 2, "months", "lunch");
         roomList.add(room1);
-        FacilityServiceImpl.getFacilityList().put(room1,0);
+        FacilityServiceImpl.getFacilityList().put(room1, 0);
         roomList.add(room2);
-        FacilityServiceImpl.getFacilityList().put(room2,0);
+        FacilityServiceImpl.getFacilityList().put(room2, 0);
         roomList.add(room3);
-        FacilityServiceImpl.getFacilityList().put(room3,0);
+        FacilityServiceImpl.getFacilityList().put(room3, 0);
     }
+
     public List<Room> getRoomList() {
         return roomList;
     }
@@ -30,13 +34,14 @@ public class RoomServiceImpl extends FacilityServiceImpl{
         RoomServiceImpl.roomList = roomList;
     }
 
-    public void addNewRoom(){
+    public void addNewRoom() {
         System.out.print("enter id service(room): ");
-        idRoom = scanner.nextLine();
+        idRoom = CheckValid.regexInputString(scanner.nextLine(), REGEX_ID_ROOM,
+                "wrong format ! SVRO-XXXX (X is number)");
         super.inputBaseInfoFacility();
         System.out.print("enter free service: ");
         freeService = scanner.nextLine();
-        Room facility = new Room(idRoom,nameService,area,price,capacity,rentStyle,freeService);
+        Room facility = new Room(idRoom, nameService, area, price, capacity, rentStyle, freeService);
         roomList.add(facility);
         super.create(facility);
     }

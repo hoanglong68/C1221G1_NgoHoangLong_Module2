@@ -8,7 +8,7 @@ public class Room extends Facility {
     public Room() {
     }
 
-    public Room(String idRoom, String nameService, int area, int price, int capacity, String rentStyle, String freeService) {
+    public Room(String idRoom, String nameService, double area, int price, int capacity, String rentStyle, String freeService) {
         super(nameService, area, price, capacity, rentStyle);
         this.idRoom = idRoom;
         this.freeService = freeService;

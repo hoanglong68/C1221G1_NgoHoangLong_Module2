@@ -13,7 +13,7 @@ public class CheckValid {
                 System.out.println(alert);
                 input = scanner.nextLine();
             }
-        } while (check);
+        } while (!check);
         return input;
     }
 }

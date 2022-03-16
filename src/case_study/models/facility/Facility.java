@@ -2,12 +2,13 @@ package case_study.models.facility;
 
 public abstract class Facility {
     private String nameService, rentStyle;
-    private int area, price, capacity;
+    private double area;
+    private int price,capacity;
 
     public Facility() {
     }
 
-    public Facility(String nameService, int area, int price, int capacity, String rentStyle) {
+    public Facility(String nameService, double area, int price, int capacity, String rentStyle) {
         this.nameService = nameService;
         this.area = area;
         this.price = price;
@@ -39,11 +40,11 @@ public abstract class Facility {
         this.rentStyle = rentStyle;
     }
 
-    public int getArea() {
+    public double getArea() {
         return area;
     }
 
-    public void setArea(int area) {
+    public void setArea(double area) {
         this.area = area;
     }
 
@@ -67,11 +68,11 @@ public abstract class Facility {
     public String toString() {
         return
                 "nameService='" + nameService + '\'' +
-                ", rentStyle='" + rentStyle + '\'' +
+                        ", rentStyle='" + rentStyle + '\'' +
 //                ", idFacility='" + idFacility + '\'' +
-                ", area=" + area +
-                ", price=" + price +
-                ", capacity=" + capacity
+                        ", area=" + area +
+                        ", price=" + price +
+                        ", capacity=" + capacity
                 ;
     }
 }
