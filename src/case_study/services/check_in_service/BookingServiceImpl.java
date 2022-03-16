@@ -1,6 +1,6 @@
-package case_study.services;
+package case_study.services.check_in_service;
 
-public class BookingServiceImpl implements IBookingService{
+public class BookingServiceImpl implements IBookingService {
     @Override
     public void read() {
 

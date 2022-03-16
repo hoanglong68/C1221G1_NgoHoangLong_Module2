@@ -76,6 +76,24 @@ public class FuramaController {
                         case 1:
                             break;
                         case 2:
+                            System.out.println("1.\tAdd New Villa\n" +
+                                    "2.\tAdd New House\n" +
+                                    "3.\tAdd New Room\n" +
+                                    "4.\tBack to menu\n");
+                            System.out.println("enter your choice !");
+                            choice = Integer.parseInt(scanner.nextLine());
+                            switch (choice){
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                                default:
+                                    System.out.println("wrong choice !");
+                            }
                             break;
                         case 3:
                             break;

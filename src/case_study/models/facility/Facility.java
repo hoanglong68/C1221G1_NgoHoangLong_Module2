@@ -1,8 +1,8 @@
 package case_study.models.facility;
 
 public abstract class Facility {
-    private String nameService,rentStyle;
-    private int area,price,capacity;
+    private String nameService, rentStyle;
+    private int area, price, capacity;
 
     public Facility() {
     }
@@ -59,9 +59,9 @@ public abstract class Facility {
     public String toString() {
         return
                 "nameService='" + nameService + '\'' +
-                ", rentStyle='" + rentStyle + '\'' +
-                ", area=" + area +
-                ", price=" + price +
-                ", capacity=" + capacity;
+                        ", rentStyle='" + rentStyle + '\'' +
+                        ", area=" + area +
+                        ", price=" + price +
+                        ", capacity=" + capacity;
     }
 }

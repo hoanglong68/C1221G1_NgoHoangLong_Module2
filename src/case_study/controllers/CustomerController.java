@@ -1,7 +1,6 @@
 package case_study.controllers;
 
 import case_study.models.person.Customer;
-import case_study.models.person.Employee;
 import case_study.services.person_service.CustomerServiceImpl;
 
 import java.util.Scanner;

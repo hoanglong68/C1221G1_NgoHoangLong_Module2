@@ -1,6 +1,6 @@
-package case_study.services;
+package case_study.services.check_in_service;
 
-public class ContractServiceImpl implements IContractService{
+public class ContractServiceImpl implements IContractService {
     @Override
     public void read() {
 

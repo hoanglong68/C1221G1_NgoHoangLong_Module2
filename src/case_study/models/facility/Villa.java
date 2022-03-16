@@ -2,14 +2,15 @@ package case_study.models.facility;
 
 
 public class Villa extends Facility {
-    private String standardOfRoom;
+    private String standardOfRoom, idVilla;
     private int poolArea;
 
     public Villa() {
     }
 
-    public Villa(String nameService, int area, int price, int capacity, String rentStyle, String standardOfRoom, int poolArea) {
+    public Villa(String idVilla, String nameService, int area, int price, int capacity, String rentStyle, String standardOfRoom, int poolArea) {
         super(nameService, area, price, capacity, rentStyle);
+        this.idVilla = idVilla;
         this.standardOfRoom = standardOfRoom;
         this.poolArea = poolArea;
     }
@@ -30,9 +31,19 @@ public class Villa extends Facility {
         this.poolArea = poolArea;
     }
 
+    public String getIdVilla() {
+        return idVilla;
+    }
+
+    public void setIdVilla(String idVilla) {
+        this.idVilla = idVilla;
+    }
+
     @Override
     public String toString() {
-        return "Villa{" + super.toString() +
+        return "Villa{"
+                + "idVilla='" + idVilla + '\'' +
+                super.toString() +
                 "standardOfRoom='" + standardOfRoom + '\'' +
                 ", poolArea=" + poolArea +
                 '}';
