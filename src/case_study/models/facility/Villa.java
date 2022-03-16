@@ -2,6 +2,7 @@ package case_study.models.facility;
 
 
 public class Villa extends Facility {
+
     private String standardOfRoom, idVilla;
     private int poolArea;
 

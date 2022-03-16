@@ -9,11 +9,7 @@ public class CustomerController {
     private String idCustomer, name, dateOfBirth, gender, idCard, phoneNumber, email, typeOfCustomer, address;
     private static CustomerServiceImpl customerService = new CustomerServiceImpl();
     Scanner scanner = new Scanner(System.in);
-    static {
-        customerService.getCustomerList().add(new Customer("011-1","mana1","2/2/1998","male","9951","0909990001","mana1@gmail.com","diamond","HN"));
-        customerService.getCustomerList().add(new Customer("011-2","mana2","21/2/1998","female","9952","0909990002","mana2@gmail.com","diamond","DN"));
-        customerService.getCustomerList().add(new Customer("011-3","mana3","21/1/1998","male","9953","0909990003","mana2@gmail.com","diamond","HCM"));
-    }
+
 
     public void inputBaseInfo() {
         System.out.print("enter name: ");

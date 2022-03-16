@@ -7,6 +7,7 @@ public class FuramaController {
     private Scanner scanner = new Scanner(System.in);
     EmployeeController employeeController = new EmployeeController();
     CustomerController customerController = new CustomerController();
+    FacilityController facilityController = new FacilityController();
     public void mainMenu() {
         do {
             System.out.println("---FURAMA MANAGEMENT PROGRAM---");
@@ -74,6 +75,7 @@ public class FuramaController {
                     choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
+                            facilityController.displayServiceList();
                             break;
                         case 2:
                             System.out.println("1.\tAdd New Villa\n" +
@@ -82,20 +84,10 @@ public class FuramaController {
                                     "4.\tBack to menu\n");
                             System.out.println("enter your choice !");
                             choice = Integer.parseInt(scanner.nextLine());
-                            switch (choice){
-                                case 1:
-                                    break;
-                                case 2:
-                                    break;
-                                case 3:
-                                    break;
-                                case 4:
-                                    break;
-                                default:
-                                    System.out.println("wrong choice !");
-                            }
+                            facilityController.addNewService(choice);
                             break;
                         case 3:
+                            facilityController.displayServiceListNeedToMaintenance();
                             break;
                         case 4:
                             break;

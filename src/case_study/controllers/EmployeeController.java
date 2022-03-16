@@ -11,12 +11,7 @@ public class EmployeeController {
     private String name, dateOfBirth, gender, idCard, phoneNumber, email;
     public static EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
     Scanner scanner = new Scanner(System.in);
-    static {
-        //doc file
-        employeeService.getEmployeeList().add(new Employee("001-1","john1","1/1/1998","male","9991","0909990001","john1@gmail.com","degree","manager",2000));
-        employeeService.getEmployeeList().add(new Employee("001-2","john2","11/1/1998","male","9992","0909990002","john2@gmail.com","degree","waiter",500));
-        employeeService.getEmployeeList().add(new Employee("001-3","john3","31/1/1998","male","9993","0909990003","john3@gmail.com","degree","supervisor",1000));
-    }
+
     public void inputBaseInfo() {
         System.out.print("enter name: ");
         name = scanner.nextLine();

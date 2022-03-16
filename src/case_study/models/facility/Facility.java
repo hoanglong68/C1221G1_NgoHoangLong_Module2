@@ -15,6 +15,14 @@ public abstract class Facility {
         this.rentStyle = rentStyle;
     }
 
+//    public String getIdFacility() {
+//        return idFacility;
+//    }
+//
+//    public void setIdFacility(String idFacility) {
+//        this.idFacility = idFacility;
+//    }
+
     public String getNameService() {
         return nameService;
     }
@@ -59,9 +67,11 @@ public abstract class Facility {
     public String toString() {
         return
                 "nameService='" + nameService + '\'' +
-                        ", rentStyle='" + rentStyle + '\'' +
-                        ", area=" + area +
-                        ", price=" + price +
-                        ", capacity=" + capacity;
+                ", rentStyle='" + rentStyle + '\'' +
+//                ", idFacility='" + idFacility + '\'' +
+                ", area=" + area +
+                ", price=" + price +
+                ", capacity=" + capacity
+                ;
     }
 }

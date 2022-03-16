@@ -8,13 +8,19 @@ import java.util.Scanner;
 
 public class EmployeeServiceImpl implements IEmployeeService {
     Scanner scanner = new Scanner(System.in);
-    private List<Employee> employeeList = new ArrayList<>();
+    private static List<Employee> employeeList = new ArrayList<>();
+    static {
+        //doc file
+        employeeList.add(new Employee("001-1","john1","1/1/1998","male","9991","0909990001","john1@gmail.com","degree","manager",2000));
+        employeeList.add(new Employee("001-2","john2","11/1/1998","male","9992","0909990002","john2@gmail.com","degree","waiter",500));
+        employeeList.add(new Employee("001-3","john3","31/1/1998","male","9993","0909990003","john3@gmail.com","degree","supervisor",1000));
+    }
     public List<Employee> getEmployeeList() {
         return employeeList;
     }
 
     public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
+        EmployeeServiceImpl.employeeList = employeeList;
     }
 
     @Override
@@ -39,7 +45,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
                         "6. email\n" +
                         "7. degree\n" +
                         "8. position\n" +
-                        "9. salary"
+                        "9. salary\n"+
+                        "10. id employee"
         );
         System.out.println("choose things you want to fix !");
         int choice = Integer.parseInt(scanner.nextLine());
@@ -79,6 +86,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
             case 9:
                 System.out.print("enter new salary: ");
                 this.getEmployeeList().get(index).setSalary(Integer.parseInt(scanner.nextLine()));
+                break;
+            case 10:
+                System.out.print("enter new id employee: ");
+                this.getEmployeeList().get(index).setIdEmployee(scanner.nextLine());
                 break;
             default:
                 System.out.println("wrong choice !");

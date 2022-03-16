@@ -8,8 +8,12 @@ import java.util.Scanner;
 
 public class CustomerServiceImpl implements ICustomerService {
     Scanner scanner = new Scanner(System.in);
-    private List<Customer> customerList = new LinkedList<>();
-
+    private static List<Customer> customerList = new LinkedList<>();
+    static {
+        customerList.add(new Customer("011-1","mana1","2/2/1998","male","9951","0909990001","mana1@gmail.com","diamond","HN"));
+        customerList.add(new Customer("011-2","mana2","21/2/1998","female","9952","0909990002","mana2@gmail.com","diamond","DN"));
+        customerList.add(new Customer("011-3","mana3","21/1/1998","male","9953","0909990003","mana2@gmail.com","diamond","HCM"));
+    }
     public List<Customer> getCustomerList() {
         return customerList;
     }
@@ -40,7 +44,8 @@ public class CustomerServiceImpl implements ICustomerService {
                         "5. phone number\n" +
                         "6. email\n" +
                         "7. type of customer\n" +
-                        "8. address"
+                        "8. address\n" +
+                        "9. id customer"
         );
         System.out.println("choose things you want to fix !");
         int choice = Integer.parseInt(scanner.nextLine());
@@ -76,6 +81,10 @@ public class CustomerServiceImpl implements ICustomerService {
             case 8:
                 System.out.print("enter new address: ");
                 this.getCustomerList().get(index).setAddress(scanner.nextLine());
+                break;
+            case 9:
+                System.out.print("enter new id customer: ");
+                this.getCustomerList().get(index).setIdCustomer(scanner.nextLine());
                 break;
             default:
                 System.out.println("wrong choice !");
