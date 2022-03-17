@@ -1,7 +1,8 @@
 package case_study.models.person;
 
 public abstract class Person {
-    private String name,dateOfBirth,gender,idCard,phoneNumber,email;
+    private String name, dateOfBirth, gender, idCard, phoneNumber, email;
+    protected static final String COMMA = ",";
 
     public Person() {
     }
@@ -63,15 +64,24 @@ public abstract class Person {
         this.email = email;
     }
 
+    public String toConvert() {
+        return name + COMMA +
+                dateOfBirth + COMMA +
+                gender + COMMA +
+                idCard + COMMA +
+                phoneNumber + COMMA +
+                email
+                ;
+    }
     @Override
     public String toString() {
         return
                 "name='" + name + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", idCard='" + idCard + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\''
+                        ", dateOfBirth='" + dateOfBirth + '\'' +
+                        ", gender='" + gender + '\'' +
+                        ", idCard='" + idCard + '\'' +
+                        ", phoneNumber='" + phoneNumber + '\'' +
+                        ", email='" + email + '\''
                 ;
     }
 }

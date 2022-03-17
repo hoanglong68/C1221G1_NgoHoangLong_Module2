@@ -48,7 +48,18 @@ public class Employee extends Person {
     }
 
     @Override
+    public String toConvert() {
+        return idEmployee + COMMA +
+                super.toConvert() + COMMA +
+                degree + COMMA +
+                position + COMMA +
+                salary
+                ;
+    }
+
+    @Override
     public String toString() {
+
         return "Employee{" +
                 "idEmployee='" + idEmployee + '\'' +
                 super.toString() +

@@ -1,13 +1,24 @@
 package case_study.controllers;
 
+import case_study.utils.CheckValid;
+import case_study.utils.IoTextFile;
+
 import java.util.Scanner;
 
 public class FuramaController {
+    private static final String REGEX_CHOICE = "^\\d+$";
+    private static final String EMPLOYEE_CSV_PATH = "src\\case_study\\data\\employee.csv";
+    private static final String CUSTOMER_CSV_PATH = "src\\case_study\\data\\customer.csv";
+    private static final String BOOKING_CSV_PATH = "src\\case_study\\data\\booking.csv";
+    private static final String CONTRACT_CSV_PATH = "src\\case_study\\data\\contract.csv";
     private int choice = -1;
+    private String temp;
+    private boolean flag;
     private Scanner scanner = new Scanner(System.in);
     EmployeeController employeeController = new EmployeeController();
     CustomerController customerController = new CustomerController();
     FacilityController facilityController = new FacilityController();
+
     public void mainMenu() {
         do {
             System.out.println("---FURAMA MANAGEMENT PROGRAM---");
@@ -18,7 +29,13 @@ public class FuramaController {
                     "5.\tPromotion Management\n" +
                     "6.\tExit\n");
             System.out.println("enter your choice !");
-            choice = Integer.parseInt(scanner.nextLine());
+            do {
+                if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_CHOICE,
+                        "must be a positive number"))) {
+                    choice = Integer.parseInt(temp);
+                    flag = true;
+                }
+            } while (!flag);
             switch (choice) {
                 case 1:
                     System.out.println("1\tDisplay list employees\n" +
@@ -26,7 +43,13 @@ public class FuramaController {
                             "3\tEdit employee\n" +
                             "4\tReturn main menu\n");
                     System.out.println("enter your choice !");
-                    choice = Integer.parseInt(scanner.nextLine());
+                    do {
+                        if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_CHOICE,
+                                "must be a positive number"))) {
+                            choice = Integer.parseInt(temp);
+                            flag = true;
+                        }
+                    } while (!flag);
                     switch (choice) {
                         case 1:
                             employeeController.displayEmployeeList();
@@ -49,7 +72,13 @@ public class FuramaController {
                             "3.\tEdit customer\n" +
                             "4.\tReturn main menu\n");
                     System.out.println("enter your choice !");
-                    choice = Integer.parseInt(scanner.nextLine());
+                    do {
+                        if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_CHOICE,
+                                "must be a positive number"))) {
+                            choice = Integer.parseInt(temp);
+                            flag = true;
+                        }
+                    } while (!flag);
                     switch (choice) {
                         case 1:
                             customerController.displayCustomerList();
@@ -72,7 +101,13 @@ public class FuramaController {
                             "3\tDisplay list facility maintenance\n" +
                             "4\tReturn main menu\n");
                     System.out.println("enter your choice !");
-                    choice = Integer.parseInt(scanner.nextLine());
+                    do {
+                        if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_CHOICE,
+                                "must be a positive number"))) {
+                            choice = Integer.parseInt(temp);
+                            flag = true;
+                        }
+                    } while (!flag);
                     switch (choice) {
                         case 1:
                             facilityController.displayServiceList();
@@ -83,7 +118,13 @@ public class FuramaController {
                                     "3.\tAdd New Room\n" +
                                     "4.\tBack to menu\n");
                             System.out.println("enter your choice !");
-                            choice = Integer.parseInt(scanner.nextLine());
+                            do {
+                                if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_CHOICE,
+                                        "must be a positive number"))) {
+                                    choice = Integer.parseInt(temp);
+                                    flag = true;
+                                }
+                            } while (!flag);
                             facilityController.addNewService(choice);
                             break;
                         case 3:
@@ -103,7 +144,13 @@ public class FuramaController {
                             "5.\tEdit contracts\n" +
                             "6.\tReturn main menu\n");
                     System.out.println("enter your choice !");
-                    choice = Integer.parseInt(scanner.nextLine());
+                    do {
+                        if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_CHOICE,
+                                "must be a positive number"))) {
+                            choice = Integer.parseInt(temp);
+                            flag = true;
+                        }
+                    } while (!flag);
                     switch (choice) {
                         case 1:
                             break;
@@ -126,7 +173,13 @@ public class FuramaController {
                             "2.\tDisplay list customers get voucher\n" +
                             "3.\tReturn main menu\n");
                     System.out.println("enter your choice !");
-                    choice = Integer.parseInt(scanner.nextLine());
+                    do {
+                        if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_CHOICE,
+                                "must be a positive number"))) {
+                            choice = Integer.parseInt(temp);
+                            flag = true;
+                        }
+                    } while (!flag);
                     switch (choice) {
                         case 1:
                             break;
@@ -139,6 +192,13 @@ public class FuramaController {
                     }
                     break;
                 case 6:
+                    IoTextFile.writeToCSVFacilityFile(FacilityController.getVillaCsvPath(), facilityController.getVillaService().getVillaList(), false);
+                    IoTextFile.writeToCSVFacilityFile(FacilityController.getHouseCsvPath(), facilityController.getHouseService().getHouseList(), false);
+                    IoTextFile.writeToCSVFacilityFile(FacilityController.getRoomCsvPath(), facilityController.getRoomService().getRoomList(), false);
+                    IoTextFile.writeToCSVPersonFile(EmployeeController.getEmployeeCsvPath(), EmployeeController.getEmployeeService().getEmployeeList(), false);
+                    IoTextFile.writeToCSVPersonFile(CustomerController.getCustomerCsvPath(), CustomerController.getCustomerService().getCustomerList(), false);
+//                    IoTextFile.writeToCSVFile(FacilityController.getVillaCsvPath(), facilityController.getVillaService().getVillaList(), false);
+//                    IoTextFile.writeToCSVFile(FacilityController.getVillaCsvPath(), facilityController.getVillaService().getVillaList(), false);
                     break;
                 default:
                     System.out.println("wrong choice !");

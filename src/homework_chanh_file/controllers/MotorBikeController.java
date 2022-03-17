@@ -3,7 +3,7 @@ package homework_chanh_file.controllers;
 import homework_chanh_file.models.MotorBike;
 import homework_chanh_file.services.MotorBikeServiceImpl;
 import homework_chanh_file.utils.CheckNumberPlate;
-import homework_chanh_file.utils.IoTextFile;
+import homework_chanh_file.utils.IoTextFileVehicle;
 import homework_chanh_file.utils.NotFoundVehicleException;
 
 
@@ -29,7 +29,7 @@ public class MotorBikeController {
 
     static {
         convertStringListToMotorBikeList();
-        manufacturerList = IoTextFile.readFromCSVFile("src\\homework_chanh_file\\data\\manufacturer.csv");
+        manufacturerList = IoTextFileVehicle.readFromCSVFile("src\\homework_chanh_file\\data\\manufacturer.csv");
     }
 
     public void add() {
@@ -115,7 +115,7 @@ public class MotorBikeController {
     }
 
     public static void convertStringListToMotorBikeList() {
-        List<String> stringList = IoTextFile.readFromCSVFile(MOTORBIKE_CSV);
+        List<String> stringList = IoTextFileVehicle.readFromCSVFile(MOTORBIKE_CSV);
         String array[];
         for (int i = 0; i < stringList.size(); i++) {
             array = stringList.get(i).split(",");

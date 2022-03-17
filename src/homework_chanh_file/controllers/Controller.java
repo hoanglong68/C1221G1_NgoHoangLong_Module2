@@ -1,6 +1,6 @@
 package homework_chanh_file.controllers;
 
-import homework_chanh_file.utils.IoTextFile;
+import homework_chanh_file.utils.IoTextFileVehicle;
 import homework_chanh_file.utils.NotFoundVehicleException;
 
 import java.util.Scanner;
@@ -103,9 +103,9 @@ public class Controller {
                     } while (count == 3);
                     break;
                 case 4:
-                    IoTextFile.writeToCSVFile(CAR_CSV, CarController.getCarService().getCarList(), false);
-                    IoTextFile.writeToCSVFile(TRUCK_CSV, TruckController.getTruckService().getTruckList(), false);
-                    IoTextFile.writeToCSVFile(MOTORBIKE_CSV, MotorBikeController.getMotorBikeService().getMotorBikeList(), false);
+                    IoTextFileVehicle.writeToCSVFile(CAR_CSV, CarController.getCarService().getCarList(), false);
+                    IoTextFileVehicle.writeToCSVFile(TRUCK_CSV, TruckController.getTruckService().getTruckList(), false);
+                    IoTextFileVehicle.writeToCSVFile(MOTORBIKE_CSV, MotorBikeController.getMotorBikeService().getMotorBikeList(), false);
                     break;
                 default:
                     System.out.println("wrong choice ! please try again");

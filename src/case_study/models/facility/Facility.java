@@ -3,7 +3,8 @@ package case_study.models.facility;
 public abstract class Facility {
     private String nameService, rentStyle;
     private double area;
-    private int price,capacity;
+    private int price, capacity;
+    protected static final String COMMA = ",";
 
     public Facility() {
     }
@@ -64,14 +65,23 @@ public abstract class Facility {
         this.capacity = capacity;
     }
 
+    public String toConvert() {
+        return
+                nameService + COMMA +
+                        area + COMMA +
+                        price + COMMA +
+                        rentStyle + COMMA +
+                        capacity
+                ;
+    }
+
     @Override
     public String toString() {
         return
                 "nameService='" + nameService + '\'' +
-                        ", rentStyle='" + rentStyle + '\'' +
-//                ", idFacility='" + idFacility + '\'' +
                         ", area=" + area +
                         ", price=" + price +
+                        ", rentStyle='" + rentStyle + '\'' +
                         ", capacity=" + capacity
                 ;
     }

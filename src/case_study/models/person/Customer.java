@@ -2,6 +2,7 @@ package case_study.models.person;
 
 public class Customer extends Person {
     private String idCustomer, typeOfCustomer, address;
+
     public Customer() {
     }
 
@@ -34,6 +35,15 @@ public class Customer extends Person {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toConvert() {
+        return idCustomer + COMMA +
+                super.toConvert() + COMMA +
+                typeOfCustomer + COMMA +
+                address
+                ;
     }
 
     @Override

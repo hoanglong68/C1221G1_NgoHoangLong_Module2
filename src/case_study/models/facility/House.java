@@ -1,6 +1,8 @@
 package case_study.models.facility;
 
 
+import java.util.Objects;
+
 public class House extends Facility {
     private String standardOfRoom;
     private int floors;
@@ -9,7 +11,8 @@ public class House extends Facility {
     public House() {
     }
 
-    public House(String idHouse, String nameService, double area, int price, int capacity, String rentStyle, String standardOfRoom, int floors) {
+    public House(String idHouse, String nameService, double area, int price, int capacity, String rentStyle,
+                 String standardOfRoom, int floors) {
         super(nameService, area, price, capacity, rentStyle);
         this.standardOfRoom = standardOfRoom;
         this.floors = floors;
@@ -41,6 +44,16 @@ public class House extends Facility {
     }
 
     @Override
+    public String toConvert() {
+        return
+                idHouse + COMMA +
+                        super.toConvert() + COMMA +
+                        standardOfRoom + COMMA +
+                        floors
+                ;
+    }
+
+    @Override
     public String toString() {
         return "House{" +
                 "idHouse='" + idHouse + '\'' +
@@ -48,5 +61,18 @@ public class House extends Facility {
                 "standardOfRoom='" + standardOfRoom + '\'' +
                 ", floors=" + floors +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        House house = (House) o;
+        return idHouse.equals(house.idHouse);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idHouse);
     }
 }

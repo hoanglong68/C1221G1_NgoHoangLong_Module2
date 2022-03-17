@@ -3,7 +3,7 @@ package homework_chanh_file.controllers;
 import homework_chanh_file.models.Truck;
 import homework_chanh_file.services.TruckServiceImpl;
 import homework_chanh_file.utils.CheckNumberPlate;
-import homework_chanh_file.utils.IoTextFile;
+import homework_chanh_file.utils.IoTextFileVehicle;
 import homework_chanh_file.utils.NotFoundVehicleException;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class TruckController {
 
     static {
         convertStringListToTruckList();
-        manufacturerList = IoTextFile.readFromCSVFile("src\\homework_chanh_file\\data\\manufacturer.csv");
+        manufacturerList = IoTextFileVehicle.readFromCSVFile("src\\homework_chanh_file\\data\\manufacturer.csv");
     }
 
     public void add() {
@@ -114,7 +114,7 @@ public class TruckController {
     }
 
     public static void convertStringListToTruckList() {
-        List<String> stringList = IoTextFile.readFromCSVFile(TRUCK_CSV);
+        List<String> stringList = IoTextFileVehicle.readFromCSVFile(TRUCK_CSV);
         String array[];
         for (int i = 0; i < stringList.size(); i++) {
             array = stringList.get(i).split(",");
