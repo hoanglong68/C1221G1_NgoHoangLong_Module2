@@ -17,6 +17,7 @@ public class FacilityServiceImpl implements IFacilityService {
     protected static final String REGEX_AREA = "^\\d{2,}";
     private static final String REGEX_PRICE = "^\\d+";
     private static final String REGEX_CAPACITY = "^\\d{1,2}";
+    private static final String[] rentStyleArray = {"year", "month", "day", "hour"};
     protected boolean flag;
     protected String temp;
 
@@ -71,7 +72,7 @@ public class FacilityServiceImpl implements IFacilityService {
             flag = false;
             if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_PRICE,
                     "must be a positive number"))) {
-                area = Integer.parseInt(temp);
+                price = Integer.parseInt(temp);
                 flag = true;
             }
         } while (!flag);
@@ -84,9 +85,15 @@ public class FacilityServiceImpl implements IFacilityService {
                 flag = true;
             }
         } while (!flag);
-        System.out.print("enter style of rent: ");
-        rentStyle = CheckValid.regexInputString(scanner.nextLine(), REGEX_STRING,
-                "wrong name format ! please try again follow base Xx...x ");
+        int choice = -1;
+        do {
+            for (int i = 0; i < rentStyleArray.length; i++) {
+                System.out.print(i + 1 + ": " + rentStyleArray[i] + ", ");
+            }
+            System.out.print("\nchoose style of rent: ");
+            choice = Integer.parseInt(scanner.nextLine());
+        } while (choice > rentStyleArray.length);
+        rentStyle = rentStyleArray[choice - 1];
     }
 
     public static void checkFacility() {

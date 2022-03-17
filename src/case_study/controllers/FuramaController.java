@@ -7,10 +7,6 @@ import java.util.Scanner;
 
 public class FuramaController {
     private static final String REGEX_CHOICE = "^\\d+$";
-    private static final String EMPLOYEE_CSV_PATH = "src\\case_study\\data\\employee.csv";
-    private static final String CUSTOMER_CSV_PATH = "src\\case_study\\data\\customer.csv";
-    private static final String BOOKING_CSV_PATH = "src\\case_study\\data\\booking.csv";
-    private static final String CONTRACT_CSV_PATH = "src\\case_study\\data\\contract.csv";
     private int choice = -1;
     private String temp;
     private boolean flag;

@@ -2,6 +2,7 @@ package case_study.services.impl;
 
 import case_study.models.person.Employee;
 import case_study.services.IEmployeeService;
+import case_study.utils.CheckValid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,26 @@ public class EmployeeServiceImpl implements IEmployeeService {
     private final String[] degreeArray = {"Intermediate", "College", "Undergraduate", "Graduate"};
     private final String[] positionArray = {"Receptionist", "Waiter", "Specialist", "Supervisor", "Manager", "Director"};
     private static List<Employee> employeeList = new ArrayList<>();
+    private final String REGEX_STRING = "^\\w+$";
+    private final String REGEX_DATEOFBIRTH = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
+    private final String REGEX_PHONE = "^\\d{10}$";
+    private final String REGEX_MAIL = "^\\w+\\@\\w+\\.[a-z]+$";
+
+    public String getREGEX_STRING() {
+        return REGEX_STRING;
+    }
+
+    public String getREGEX_DATEOFBIRTH() {
+        return REGEX_DATEOFBIRTH;
+    }
+
+    public String getREGEX_PHONE() {
+        return REGEX_PHONE;
+    }
+
+    public String getREGEX_MAIL() {
+        return REGEX_MAIL;
+    }
 
     public String[] getDegreeArray() {
         return degreeArray;
@@ -60,27 +81,33 @@ public class EmployeeServiceImpl implements IEmployeeService {
         switch (choice) {
             case 1:
                 System.out.print("enter new name: ");
-                this.getEmployeeList().get(index).setName(scanner.nextLine());
+                this.getEmployeeList().get(index).setName(CheckValid.regexInputString(scanner.nextLine(), REGEX_STRING,
+                        "need to input some things !"));
                 break;
             case 2:
                 System.out.print("enter new date of birth: ");
-                this.getEmployeeList().get(index).setDateOfBirth(scanner.nextLine());
+                this.getEmployeeList().get(index).setDateOfBirth(CheckValid.regexInputString(scanner.nextLine(), REGEX_DATEOFBIRTH,
+                        "need to input follow base dd/mm/yyyy !"));
                 break;
             case 3:
                 System.out.print("enter new gender: ");
-                this.getEmployeeList().get(index).setGender(scanner.nextLine());
+                this.getEmployeeList().get(index).setGender(CheckValid.regexInputString(scanner.nextLine(), REGEX_STRING,
+                        "need to input some things !"));
                 break;
             case 4:
                 System.out.print("enter new id card: ");
-                this.getEmployeeList().get(index).setIdCard(scanner.nextLine());
+                this.getEmployeeList().get(index).setIdCard(CheckValid.regexInputString(scanner.nextLine(), REGEX_STRING,
+                        "need to input some things !"));
                 break;
             case 5:
                 System.out.print("enter new phone number: ");
-                this.getEmployeeList().get(index).setPhoneNumber(scanner.nextLine());
+                this.getEmployeeList().get(index).setPhoneNumber(CheckValid.regexInputString(scanner.nextLine(), REGEX_PHONE,
+                        "need to input enough ten numbers !"));
                 break;
             case 6:
                 System.out.print("enter new email: ");
-                this.getEmployeeList().get(index).setEmail(scanner.nextLine());
+                this.getEmployeeList().get(index).setEmail(CheckValid.regexInputString(scanner.nextLine(), REGEX_MAIL,
+                        "need to input follow base x@y.z !"));
                 break;
             case 7:
                 do {

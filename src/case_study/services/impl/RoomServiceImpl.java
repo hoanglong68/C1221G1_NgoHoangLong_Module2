@@ -32,7 +32,9 @@ public class RoomServiceImpl extends FacilityServiceImpl {
                 "wrong format ! SVRO-XXXX (X is number)");
         super.inputBaseInfoFacility();
         System.out.print("enter free service: ");
-        freeService = scanner.nextLine();
+        if ("".equals(freeService = scanner.nextLine())) {
+            freeService = "no free service";
+        }
         Room facility = new Room(idRoom, nameService, area, price, capacity, rentStyle, freeService);
         roomList.add(facility);
         super.create(facility);

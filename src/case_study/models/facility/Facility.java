@@ -70,8 +70,8 @@ public abstract class Facility {
                 nameService + COMMA +
                         area + COMMA +
                         price + COMMA +
-                        rentStyle + COMMA +
-                        capacity
+                        capacity+ COMMA +
+                        rentStyle
                 ;
     }
 

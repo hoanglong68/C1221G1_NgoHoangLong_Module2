@@ -2,6 +2,7 @@ package case_study.controllers;
 
 import case_study.models.person.Customer;
 import case_study.services.impl.CustomerServiceImpl;
+import case_study.utils.CheckValid;
 import case_study.utils.IoTextFile;
 
 import java.util.List;
@@ -29,27 +30,43 @@ public class CustomerController {
         CustomerController.convertStringListToCustomerList(CUSTOMER_CSV_PATH);
     }
 
+    private boolean flag = false;
+    private int choice = -1;
+
     public void inputBaseInfo() {
         System.out.print("enter name: ");
-        name = scanner.nextLine();
+        name = CheckValid.regexInputString(scanner.nextLine(), customerService.getREGEX_STRING(),
+                "need to input some things !");
         System.out.print("enter date of birth: ");
-        dateOfBirth = scanner.nextLine();
+        dateOfBirth = CheckValid.regexInputString(scanner.nextLine(), customerService.getREGEX_DATEOFBIRTH(),
+                "need to input follow base dd/mm/yyyy !");
         System.out.print("enter gender: ");
-        gender = scanner.nextLine();
+        gender = CheckValid.regexInputString(scanner.nextLine(), customerService.getREGEX_STRING(),
+                "need to input some things !");
         System.out.print("enter id card: ");
-        idCard = scanner.nextLine();
+        idCard = CheckValid.regexInputString(scanner.nextLine(), customerService.getREGEX_STRING(),
+                "need to input some things !");
         System.out.print("enter phone number: ");
-        phoneNumber = scanner.nextLine();
+        phoneNumber = CheckValid.regexInputString(scanner.nextLine(), customerService.getREGEX_PHONE(),
+                "need to input enough ten numbers !");
         System.out.print("enter email: ");
-        email = scanner.nextLine();
+        email = CheckValid.regexInputString(scanner.nextLine(), customerService.getREGEX_MAIL(),
+                "need to input follow base x@y.z !");
     }
 
     public void addNewCustomer() {
         System.out.print("enter id employee: ");
         idCustomer = scanner.nextLine();
         this.inputBaseInfo();
-        System.out.print("enter type of customer: ");
-        typeOfCustomer = scanner.nextLine();
+
+        do {
+            for (int i = 0; i < customerService.getCustomerClassArray().length; i++) {
+                System.out.print(i + 1 + ": " + customerService.getCustomerClassArray()[i] + ", ");
+            }
+            System.out.print("\nchoose type of customer: ");
+            choice = Integer.parseInt(scanner.nextLine());
+        } while (choice > customerService.getCustomerClassArray().length);
+        typeOfCustomer = customerService.getCustomerClassArray()[choice - 1];
         System.out.print("enter address: ");
         address = scanner.nextLine();
         Customer customer = new Customer(idCustomer, name, dateOfBirth, gender, idCard, phoneNumber, email, typeOfCustomer, address);
