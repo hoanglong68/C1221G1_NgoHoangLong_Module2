@@ -45,7 +45,17 @@ public class HouseServiceImpl extends FacilityServiceImpl {
             }
         } while (!flag);
         House facility = new House(idHouse, nameService, area, price, capacity, rentStyle, standardOfRoom, floors);
-        houseList.add(facility);
         super.create(facility);
+        flag = false;
+        for (int i = 0; i < houseList.size(); i++) {
+            if (facility.getIdHouse().equals(houseList.get(i).getIdHouse())) {
+                houseList.set(i,facility);
+                flag = true;
+                break;
+            }
+        }
+        if (!flag){
+            houseList.add(facility);
+        }
     }
 }

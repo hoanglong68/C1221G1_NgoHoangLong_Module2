@@ -23,7 +23,7 @@ public class FuramaController {
                     "3.\tFacility Management\n" +
                     "4.\tBooking Management\n" +
                     "5.\tPromotion Management\n" +
-                    "6.\tExit\n");
+                    "6.\tSave and Exit !\n");
             System.out.println("enter your choice !");
             do {
                 if (0 < Integer.parseInt(temp = CheckValid.regexInputString(scanner.nextLine(), REGEX_CHOICE,

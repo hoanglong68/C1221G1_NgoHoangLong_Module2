@@ -1,4 +1,6 @@
 package case_study.services;
 
-public interface IContractService extends IService {
+import case_study.models.check_in.Contract;
+
+public interface IContractService extends IService<Contract> {
 }

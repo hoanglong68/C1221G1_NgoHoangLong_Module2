@@ -44,7 +44,17 @@ public class VillaServiceImpl extends FacilityServiceImpl {
             }
         } while (!flag);
         Villa facility = new Villa(idVilla, nameService, area, price, capacity, rentStyle, standardOfRoom, poolArea);
-        villaList.add(facility);
         super.create(facility);
+        flag = false;
+        for (int i = 0; i <villaList.size() ; i++) {
+            if (facility.getIdVilla().equals(villaList.get(i).getIdVilla())){
+                villaList.set(i,facility);
+                flag = true;
+                break;
+            }
+        }
+        if (!flag){
+            villaList.add(facility);
+        }
     }
 }

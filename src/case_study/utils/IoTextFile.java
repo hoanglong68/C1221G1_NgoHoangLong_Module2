@@ -85,4 +85,21 @@ public class IoTextFile {
 //            }
 //        }
 //    }
+//public static List<String> readFromCSVFile(String pathFile) {
+//    List<String> stringList = new ArrayList<>();
+//    file = new File(pathFile);
+//    try {
+//        FileReader fileReader = new FileReader(file);
+//        BufferedReader bufferedReader = new BufferedReader(fileReader);
+//        String line;
+//        while ((line = bufferedReader.readLine()) != null) {
+//            stringList.add(line);
+//        }
+//        bufferedReader.close();
+//        fileReader.close();
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//    }
+//    return stringList;
+//}
 }

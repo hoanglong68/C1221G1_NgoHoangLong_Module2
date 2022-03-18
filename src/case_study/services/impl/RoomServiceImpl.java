@@ -36,7 +36,17 @@ public class RoomServiceImpl extends FacilityServiceImpl {
             freeService = "no free service";
         }
         Room facility = new Room(idRoom, nameService, area, price, capacity, rentStyle, freeService);
-        roomList.add(facility);
         super.create(facility);
+        flag = false;
+        for (int i = 0; i < roomList.size(); i++) {
+            if (facility.getIdRoom().equals(roomList.get(i).getIdRoom())) {
+                roomList.set(i, facility);
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            roomList.add(facility);
+        }
     }
 }

@@ -1,4 +1,6 @@
 package case_study.services;
 
-public interface IBookingService extends IService {
+import case_study.models.check_in.Booking;
+
+public interface IBookingService extends IService<Booking> {
 }

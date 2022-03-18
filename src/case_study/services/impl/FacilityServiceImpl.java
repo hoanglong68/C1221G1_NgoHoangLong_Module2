@@ -38,6 +38,15 @@ public class FacilityServiceImpl implements IFacilityService {
 
     @Override
     public void create(Facility facility) {
+        int value;
+        for (int i = 0; i < FacilityServiceImpl.getFacilityList().size(); i++) {
+            if (FacilityServiceImpl.getFacilityList().containsKey(facility)) {
+                value = FacilityServiceImpl.getFacilityList().get(facility);
+                FacilityServiceImpl.getFacilityList().remove(facility);
+                FacilityServiceImpl.getFacilityList().put(facility, value);
+                break;
+            }
+        }
         FacilityServiceImpl.getFacilityList().put(facility, 0);
     }
 
