@@ -14,6 +14,8 @@ public class FuramaController {
     EmployeeController employeeController = new EmployeeController();
     CustomerController customerController = new CustomerController();
     FacilityController facilityController = new FacilityController();
+    BookingController bookingController = new BookingController();
+    ContractController contractController = new ContractController();
 
     public void mainMenu() {
         do {
@@ -149,12 +151,16 @@ public class FuramaController {
                     } while (!flag);
                     switch (choice) {
                         case 1:
+                            bookingController.bookingService.addBooking();
                             break;
                         case 2:
+                            bookingController.bookingService.displayBooking();
                             break;
                         case 3:
+                            contractController.contractService.addContract();
                             break;
                         case 4:
+                            contractController.contractService.displayContract();
                             break;
                         case 5:
                             break;

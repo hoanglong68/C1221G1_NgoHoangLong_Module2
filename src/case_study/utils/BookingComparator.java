@@ -15,14 +15,14 @@ public class BookingComparator implements Comparator<Booking> {
         LocalDate endDate1 = LocalDate.parse(o1.getEndDate(), dateTimeFormatter);
         LocalDate endDate2 = LocalDate.parse(o2.getEndDate(), dateTimeFormatter);
         if (startDate1.compareTo(startDate2) < 0) {
-            return 1;
-        } else if (startDate1.compareTo(startDate2) > 0) {
             return -1;
+        } else if (startDate1.compareTo(startDate2) > 0) {
+            return 1;
         } else {
             if (endDate1.compareTo(endDate2) < 0) {
-                return 1;
-            } else if (endDate1.compareTo(endDate2) > 0) {
                 return -1;
+            } else if (endDate1.compareTo(endDate2) > 0) {
+                return 1;
             }else {
                 return 0;
             }

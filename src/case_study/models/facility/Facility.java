@@ -5,11 +5,13 @@ public abstract class Facility {
     private double area;
     private int price, capacity;
     protected static final String COMMA = ",";
+    private String idFacility;
 
     public Facility() {
     }
 
-    public Facility(String nameService, double area, int price, int capacity, String rentStyle) {
+    public Facility(String idFacility, String nameService, double area, int price, int capacity, String rentStyle) {
+        this.idFacility = idFacility;
         this.nameService = nameService;
         this.area = area;
         this.price = price;
@@ -17,13 +19,13 @@ public abstract class Facility {
         this.rentStyle = rentStyle;
     }
 
-//    public String getIdFacility() {
-//        return idFacility;
-//    }
-//
-//    public void setIdFacility(String idFacility) {
-//        this.idFacility = idFacility;
-//    }
+    public String getIdFacility() {
+        return idFacility;
+    }
+
+    public void setIdFacility(String idFacility) {
+        this.idFacility = idFacility;
+    }
 
     public String getNameService() {
         return nameService;
@@ -70,7 +72,7 @@ public abstract class Facility {
                 nameService + COMMA +
                         area + COMMA +
                         price + COMMA +
-                        capacity+ COMMA +
+                        capacity + COMMA +
                         rentStyle
                 ;
     }
