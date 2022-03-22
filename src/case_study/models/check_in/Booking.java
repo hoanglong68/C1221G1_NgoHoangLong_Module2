@@ -65,7 +65,7 @@ public class Booking {
                 "idBooking='" + idBooking + '\'' +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
-                ", customer=" + customer +
+                ", customer=" + customer.getIdCustomer() +
                 ", facility=" + facility +
                 '}';
     }
@@ -74,7 +74,7 @@ public class Booking {
         return idBooking + COMMA +
                 startDate + COMMA +
                 endDate + COMMA +
-                customer + COMMA +
+                customer.getIdCustomer() + COMMA +
                 facility;
     }
 }

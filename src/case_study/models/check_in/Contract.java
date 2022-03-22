@@ -66,7 +66,7 @@ public class Contract {
                 ", booking=" + booking +
                 ", prePay='" + prePay + '\'' +
                 ", totalPay='" + totalPay + '\'' +
-                ", customer=" + customer +
+                ", customer=" + customer.getIdCustomer() +
                 '}';
     }
 
@@ -75,6 +75,6 @@ public class Contract {
                 booking + COMMA +
                 prePay + COMMA +
                 totalPay + COMMA +
-                customer;
+                customer.getIdCustomer();
     }
 }
