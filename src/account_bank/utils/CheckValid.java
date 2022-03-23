@@ -1,4 +1,4 @@
-package de_2.utils;
+package account_bank.utils;
 
 import java.util.Scanner;
 
